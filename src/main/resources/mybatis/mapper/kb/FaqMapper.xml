@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kbcp.site.kb.faq.mapper.FaqMapper">
+
+    <!-- FAQ 상세조회 by faq_id -->
+    <select id="getFaq" parameterType="long" resultType="kbcp.site.kb.faq.vo.FaqVO">
+        <!-- getFaq -->
+        select
+            faq_seq
+            ,faq_title
+            ,faq_content
+            ,faq_st
+            ,create_time
+            ,update_time
+        from faq
+        <where>
+            faq_seq = #{faqSeq}
+        </where>
+    </select>
+
+    <!-- FAQ 페이지 이동 후 FAQ 리스트 호출 -->
+    <select id="getFaqList" parameterType="string" resultType="kbcp.site.kb.faq.vo.FaqListVO">
+        <!-- getFaqList -->
+        select
+            faq_seq
+            ,faq_title
+            ,faq_st
+            ,row_number() over(order by faq_ord asc) as ROW_NUM
+            ,count(*) over() ROW_CNT
+        from faq
+        <where>
+            faq_st = 'y' and member_id = #{memberId}
+        </where>
+        order by
+            faq_ord asc
+    </select>
+
+</mapper>

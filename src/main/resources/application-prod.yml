@@ -1,0 +1,73 @@
+app:
+  scheduler:
+    cron:
+      clean-logfolder: 0 30 3 * * *
+      delete-logfolder: 30
+      issue-coupon: 30 0 0 * * *
+  logging:
+    path: /home/zlgoon/service/stardream/stardream-web/logs
+    level: INFO
+    compress: gz
+  crypto:
+    private: MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBANcqwseWbVqly0AQBPhCgCj/N6DFcwIGy1emheszxXZFFKcKlHurWnPqiRBnxniHi1c4+rGL1Y7CzHYzMZx7sbtJK1QIsWn1dOu1u4jRzfT2NnpoQ4aSmDoH7I3Gxkmxi6mrgbT/9tqDJMC03WOP/6gceOe/b4Ef1XvzworBR9pPAgMBAAECgYBH4LQCwqCzSHFWbEOMv4Jar69gmLUrtyNUm39fLANJ2BfnGWSyz3I/CNlSzqgBeZ41vAYbK5BiyXZOAhoPoU6kmg5/UVnOAZI9473b1Q5bWk/0ZY1xGU0FNtsIVVxkOl7+s0bh4CVai4+Hbvc1bjiE2WVm/CwG+gv2KBU3oFgg0QJBAPLDSLmuAFX9ahCJTbz3xwq/HrFPnzGUhqemKyxCRusaFp5tLNNPScgcUQnkc6/Jj3cIb3+4rEQDS9cGZCiWKJkCQQDi5kStbE71O9qVkLeUjEX6BU5L7SwvWhWTyt4IY3Ywr482aLKz0GDcB8gNHi/hK7Y8qj3Vnw6xSyDyEtwIqOMnAkEA2hx+wOUGxDuVChpyz+9G0+73IpPJEgDCIup3K6K4mQ6td9XbSleYkMRwQxUQo8XSsj3P/87qZ4kWoLDLWHPhMQJAKJ44JSOCbvwsASJK+tixnjRc89KdWkyyGCb04GONwOFsrbzIYNAoxrrN4StKPvDoSqvfLeKvaqWcXDlsElDJeQJAKnfrUqcc4wkREFbb5PBNiUsyev0L4ywTqIjLGdWuJAmMppkNGtZ5buiyQEmc/mwQUmGzCs2vZNCbhSTZuDRnMA==
+    public: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDXKsLHlm1apctAEAT4QoAo/zegxXMCBstXpoXrM8V2RRSnCpR7q1pz6okQZ8Z4h4tXOPqxi9WOwsx2MzGce7G7SStUCLFp9XTrtbuI0c309jZ6aEOGkpg6B+yNxsZJsYupq4G0//bagyTAtN1jj/+oHHjnv2+BH9V788KKwUfaTwIDAQAB
+
+site:
+  network:
+    zlgoon: https://corp.smilecon.co.kr
+  kb:
+    crypto:
+      seedKey: 6A552156447545423737344E47357635544B62506D5167463242705948507372 #리얼
+
+spring:
+  application:
+    name: kbcp
+  main:
+    allow-bean-definition-overriding: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates
+    suffix: .html
+    check-template-location: true
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.16.2.13:3306/kbcp?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: kbcp
+    password: 2024Kbcp!@
+    hikari:
+      #풀에 유지할 최소 커넥션 갯수
+      minimum-idle: 5
+      #유휴 상태와 사용중인 커넥션을 포함해서 풀이 허용하는 최대 커넥션 갯수
+      maximum-pool-size: 30
+      #커넥션이 풀에서 유휴상태로 남을 수 있는 최대 시간을 밀리초단위로 지정
+      idle-timeout: 30000
+      #풀에서 커넥션을 구할 때 대기시간을 밀리초 단위로 지정합니다. 대기 시간 안에 구하지 못하면 익셉션 발생.
+      connection-timeout: 10000
+      #커넥션의 최대 유지시간. 이 시간이 지난 커넥션중에서 사용중인 커넥션은 종료된 이후에 풀에서 제거
+      max-lifetime: 58000
+      validation-timeout: 3000
+      hikari.connection-test-query: SELECT 1
+  web:
+    resources:
+      chain:
+        strategy:
+          content:
+            paths: /kb/js/**, /kb/css/**
+            enabled: true
+
+mybatis:
+  mapper-locations: classpath:/mybatis/mapper/**/*.xml
+  config-location: classpath:/mybatis/config.xml
+
+server:
+  port: 10013

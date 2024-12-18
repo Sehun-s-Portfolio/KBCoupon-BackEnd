@@ -1,0 +1,26 @@
+%!Adobe-FontList 1.22
+%Locale:0x412
+
+%BeginFont
+Handler:DirectoryHandler
+FontType:TrueType
+FontName:UtahCondensed-Bold
+FamilyName:Utah Condensed
+StyleName:Bold
+FullName:Utah Condensed Bold
+MenuName:Utah Condensed
+StyleBits:2
+WritingScript:Roman
+OutlineFileName:C:\Users\ceo\Downloads\Font\Utah Condensed Bold.ttf
+DataFormat:sfntData
+hasSVG:no
+VariableFontType:NonVariableFont
+FileLength:36632
+FileModTime:1708740726
+WeightClass:700
+WidthClass:2
+AngleClass:0
+NameArray:0,Mac,4,Utah Condensed Bold
+NameArray:0,Win,1,Utah Condensed
+%EndFont
+

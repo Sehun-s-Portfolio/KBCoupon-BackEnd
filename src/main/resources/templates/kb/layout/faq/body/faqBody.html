@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<body th:fragment="faqBody">
+
+<!-- 잘못된 접근 시 노출 영역 -->
+<div th:replace="/kb/layout/common/body/commonErrorAccess :: commonErrorAccess"></div>
+
+<div class="container">
+    <div class='row justify-content-center'>
+        <div class='section-all section-faq col-xl-12 col-lg-12 col-xs-12 col-sm-12'>
+
+            <!-- FAQ 에서 뒤로 돌아가기 버튼 -->
+            <form role="form" th:action="@{/page/kb/availableCoupon.ux}"
+                  enctype="application/x-www-form-urlencoded" name="couponBox" th:method="post">
+                <input type="hidden" id="resultText" name="result_text" th:if="${couponInfo != null}"
+                       th:value="${couponInfo}">
+                <div class='backpage col-12 d-flex justify-content-between align-items-center'>
+                    <h2 class='h2Title'>
+                        <a class="nav-link active" aria-current="page" href="javascript:void(0);"
+                           onclick="document.forms['couponBox'].submit();">
+                            <img src="https://smilecon-img.zlgoon.com/stardream/kb/images/icon_back_24.svg" alt="">
+                            FAQ
+                        </a>
+                    </h2>
+                </div>
+            </form>
+
+            <!-- FAQ 노출 리스트 -->
+            <div class='viewDiv accordionDiv col-12'>
+                <div class="accordion accordion-flush faqList" id="accordionFlushExample">
+                    <input type="hidden" id="memberId" name="result_text" th:value="${memberId}">
+
+                    <div class="accordion-item" th:each="faq : ${faqList.getRspList()}">
+                        <h2 class="accordion-header" id="flush-headingOne">
+
+                            <!-- FAQ 상세 조회 버튼 -->
+                            <button th:faqBoxId="${faq.getFaqSeq()}" th:onclick="getFaq(this.getAttribute('faqBoxId'))"
+                                    class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    th:data-bs-target="'#flush-collapseOne' + ${faq.getFaqSeq()}" aria-expanded="true"
+                                    th:aria-controls="'flush-collapseOne' + ${faq.getFaqSeq()}">
+
+                                <!-- FAQ 유형 및 타이틀 -->
+                                <h6>
+                                    <p th:text="${faq.getFaqTitle()}"></p>
+                                </h6>
+                            </button>
+                        </h2>
+
+                        <!-- FAQ 상세 내용 노출 영역 -->
+                        <div th:id="'flush-collapseOne' + ${faq.getFaqSeq()}" class="accordion-collapse collapse faq"
+                             aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body" th:id="'text-flush-collapseOne' + ${faq.getFaqSeq()}" >
+                            </div>
+                            <p class="fw-300"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class='bottomDiv'>
+        <div class='footerDiv'>
+            <h5 class="fw-300">KB스타드림 전용 고객센터</h5>
+            <h2 class="fw-bold">1661-8193</h2>
+            <h6 class="fw-300">평일 09:30~18:00 (점심시간 11:30~13:00)</h6>
+            <h6 class="fw-300">토, 일, 공휴일 휴무</h6>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

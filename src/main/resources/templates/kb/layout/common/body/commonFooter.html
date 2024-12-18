@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html >
+
+<!--<footer th:fragment="commonFooter">-->
+
+<div class='bottomDiv' th:fragment="commonFooter"><!-- couponDetail, FAQ, inquiryBody,inquiryHistory 에서 bottomDiv 삭제 -->
+    <form role="form" method="post" enctype="application/x-www-form-urlencoded">
+        <input type="hidden" id="resultText" name="resultText" th:if="${couponInfo != null}"
+               th:value="${couponInfo}">
+
+        <div class='inquryDiv col-12 d-flex align-items-center gap-3 justify-content-center'>
+            <div class='buttonDiv col-4'>
+                <button type='submit' class="fw-300" th:formaction="@{/page/kb/faq.ux}" value="faq">FAQ</button>
+            </div>
+            <div class='buttonDiv col-4'>
+                <button type='submit' class="fw-300" th:formaction="@{/page/kb/inquiry.ux}" value="inquiry">1:1 상담
+                </button>
+            </div>
+            <div class='buttonDiv col-4'>
+                <button type='submit' class="fw-300" th:formaction="@{/page/kb/inquiryHistory.ux}"
+                        value="inquiryHistory">MY 상담내역
+                </button>
+            </div>
+        </div>
+    </form>
+
+
+    <div class='footerDiv'>
+        <h5 class="fw-300">KB스타드림 전용 고객센터</h5>
+        <h2 class="fw-bold">1661-8193</h2>
+        <h6 class="fw-300">평일 09:30~18:00 (점심시간 11:30~13:00)</h6>
+        <h6 class="fw-300">토, 일, 공휴일 휴무</h6>
+    </div>
+</div>
+
+<!--</footer>-->
+</html>
+

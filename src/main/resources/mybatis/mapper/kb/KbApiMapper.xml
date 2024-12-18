@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kbcp.site.kb.api.mapper.KbApiMapper">
+
+    <!-- 고객 쿠폰 발급내역 및 사용 현황 조회 -->
+    <select id="getCouponInfoList" parameterType="kbcp.site.kb.api.vo.KbReqCouponInfoVO" resultType="kbcp.site.kb.api.vo.CouponInfoListVO">
+        <!-- getCouponInfoList -->
+        select
+            prize.goods_id as goods_id
+            ,prize.goods_id_no
+            ,prize.status
+            ,goods_before.goods_id as pd1_id
+            ,case
+                when prize.coupon_num is null then DATE_FORMAT(prize.create_time, '%Y%m%d%H%i%S')
+                else DATE_FORMAT(prize.coupon_time, '%Y%m%d%H%i%S')
+            end as pd1_get_time
+            ,goods_before.goods_name as pd1_name
+            ,goods_before.product_price as pd1_price
+            ,goods.goods_id as pd2_id
+            ,case
+                when prize.coupon_num is null then null
+                else DATE_FORMAT(prize.create_time, '%Y%m%d%H%i%S')
+            end as pd2_get_time
+            ,goods.goods_name as pd2_name
+            ,goods.product_price as pd2_price
+            ,prize.coupon_status as pd_use_gubun
+            ,DATE_FORMAT(prize.coupon_use_time, '%Y%m%d%H%i%S') as pd_use_time
+            ,goods.calculate_price as pd_cal_price
+        from prize prize
+            left outer join goods goods on goods.goods_seq = prize.goods_seq
+            left outer join goods goods_before on goods.goods_seq = prize.goods_seq_before
+        <where>
+            prize.customer_id = #{customer_id} and prize.corp_code = #{corp_code}
+            <if test="start_day != null and start_day != ''">
+                <![CDATA[
+	            and prize.create_time >= STR_TO_DATE(#{start_day}, '%Y%m%d')
+				]]>
+            </if>
+            <if test="end_day != null and end_day != ''">
+                <![CDATA[
+	            and prize.create_time <= STR_TO_DATE(#{end_day}, '%Y%m%d')
+				]]>
+            </if>
+        </where>
+        order by prize.prize_seq
+        limit 100;
+    </select>
+
+</mapper>

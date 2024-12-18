@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html >
+
+<body th:fragment="errorBody">
+
+<!-- 잘못된 페이지 경로 호출 시 발생되는 404 페이지 -->
+<div class="page404">
+    <i class="fa-solid fa-circle-exclamation"></i>
+    <h5 class='fw-300'>오류가 발생했습니다</h5>
+    <!--<p class='fw-300'>에러코드</p>-->
+    <p class='fw-300' th:text="${errMsg}"></p>
+
+    <a class="nav-link active fw-bold" aria-current="page">
+        <button type="button" class='fw-300' onclick="location.href='javascript:history.back();'">뒤로 돌아가기</button>
+    </a>
+</div>
+
+</body>
+</html>

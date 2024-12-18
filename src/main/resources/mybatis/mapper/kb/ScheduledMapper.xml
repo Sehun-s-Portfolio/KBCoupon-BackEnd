@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kbcp.scheduler.ScheduledMapper">
+
+    <!-- 강제 쿠폰 발급 대상 리스트 조회(쿠폰 미발급 2일 경과) -->
+    <select id="getIssueCouponList" resultType="kbcp.scheduler.vo.IssueCouponListVO">
+        <!-- getIssueCouponList -->
+        select
+            prize.prize_seq
+            ,prize.corp_code
+            ,event.event_id
+            ,event.expired_date
+            ,prize.tran_id
+            ,goods.goods_seq
+            ,goods.goods_id
+            ,goods.default_yn
+            ,DATE_FORMAT(prize.create_time, '%Y%m%d') as create_time
+        from prize prize
+            left outer join event event on event.event_seq = prize.event_seq
+            left outer join goods goods on goods.goods_seq = prize.goods_seq
+        where (event.expired_date - DATEDIFF(now(), prize.create_time)) <![CDATA[ <= ]]> 0
+            and prize.status = '0' and run_batch = '0'
+        order by prize.create_time desc;
+    </select>
+
+    <!-- 당첨권 상태 변경 -->
+    <update id="updateRunBatch" parameterType="String">
+        update prize
+        <trim prefix="SET" suffixOverrides=",">
+            run_batch = '1',
+        </trim>
+        <where>
+            prize_seq = #{prizeSeq}
+        </where>
+    </update>
+
+</mapper>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html >
+
+<body th:fragment="404Body">
+
+<!-- 잘못된 페이지 경로 호출 시 발생되는 404 페이지 -->
+<div class="page404">
+    <i class="fa-solid fa-circle-exclamation"></i>
+    <h5 class='fw-300'>자동 로그아웃 안내</h5>
+    <p class='fw-300'>고객님의 안전한 서비스 이용을 위해<br>대기시간 초과로 자동 로그아웃 되었습니다.<br>다시 로그인 해주세요.</p>
+    <div style="width: 50%; margin: 0 auto; padding-top: 1rem;">
+        <p th:if="${errMsg != null && !errMsg.contains('null') && errMsg != ''}" style="text-align: left; width: 100%; margin-top: 10px;" th:text="'[' + ${errMsg} + ']'"></p>
+    </div>
+</div>
+
+</body>
+</html>

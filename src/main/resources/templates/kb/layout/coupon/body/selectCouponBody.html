@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<body th:fragment="selectCouponBody">
+
+<!-- 잘못된 접근 시 노출 영역 -->
+<div th:replace="/kb/layout/common/body/commonErrorAccess :: commonErrorAccess"></div>
+
+<div class="container">
+    <div class='row justify-content-center'>
+        <div class='section-coupon  col-xl-12 col-lg-12 col-xs-12 col-sm-12'>
+            <div class='topView'>
+
+                <!-- 쿠폰 선택 상단 타이틀 영역 -->
+                <div class='col-12 d-flex justify-content-between align-items-center'>
+                    <h6 class='m-0 fw-300'>쿠폰 선택</h6>
+
+                    <!-- X버튼 (내부에서 접근한 쿠폰 선택 페이지의 경우) -->
+                    <form role="form" th:if="${prevPage == 'our' || prevPage == null}" th:action="@{/page/kb/availableCoupon.ux}"
+                          enctype="application/x-www-form-urlencoded" name="couponBoxFromOur" th:method="post">
+                        <input type="hidden" name="result_text" th:if="${couponInfo != null}"
+                               th:value="${couponInfo}">
+                        <a class="nav-link active fw-300" aria-current="page" href="javascript:void(0);"
+                           onclick="document.forms['couponBoxFromOur'].submit();">
+                            <button type="button" class='fw-300'>
+                                <img src="https://smilecon-img.zlgoon.com/stardream/kb/images/icon_close_24.svg" alt="">
+                            </button>
+                        </a>
+                    </form>
+
+                    <!-- X버튼 (KB에서 바로 접근한 쿠폰 선택 페이지의 경우) -->
+                    <form role="form" th:if="${prevPage != null && prevPage != 'our'}" th:action="@{/api/kb/coupon.ux}"
+                          enctype="application/x-www-form-urlencoded" name="couponBoxFromKb" th:method="post">
+                        <input type="hidden" name="result_text" th:if="${couponInfo != null}"
+                               th:value="${couponInfo}">
+                        <a class="nav-link active fw-300" aria-current="page" href="javascript:void(0);"
+                           onclick="document.forms['couponBoxFromKb'].submit();">
+                            <button type="button" class='fw-300'>
+                                <img src="https://smilecon-img.zlgoon.com/stardream/kb/images/icon_close_24.svg" alt="">
+                            </button>
+                        </a>
+                    </form>
+
+                </div>
+
+                <!-- 쿠폰 알림 영역 (데이터 호출해서 노출) -->
+                <div class='col-12 topBannerDiv d-flex align-items-center'>
+                    <div class="selectBannerText col-7">
+                        <!-- 상단 문구 (TOP Text) -->
+                        <h5 class="fw-700" th:text="${eventInfo.getTopText()}"></h5>
+
+                        <!-- 유의사항 (Caution) -->
+                        <p class="fw-300" th:if="${eventInfo.getCaution() == '' || eventInfo.getCaution() == null}">당첨일
+                            포함 2일 이내 미선택 시 기존 쿠폰이 발급돼요.</p>
+                        <p class="fw-300" th:if="${eventInfo.getCaution() != '' || eventInfo.getCaution() != null}"
+                           th:text="${eventInfo.getCaution()}"></p>
+                    </div>
+
+                    <!-- 쿠폰 선택 페이지 상단 배너 이미지 -->
+                    <div class="selectBannerImg col-5">
+                        <img th:if="${eventInfo.getFileImgPath().contains('null') || eventInfo.getFileImgPath() == null || eventInfo.getFileImgPath() == ''}"
+                             src="https://smilecon-img.zlgoon.com/stardream/kb/images/bearimg.svg" alt="">
+
+                        <img th:if="${!eventInfo.getFileImgPath().contains('null') && eventInfo.getFileImgPath() != null && eventInfo.getFileImgPath() != ''}"
+                             th:src="${eventInfo.getFileImgPath()}">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 쿠폰 제품 리스트 노출 영역 -->
+            <div class='viewDiv col-12 select'>
+                <!-- 쿠폰 제품 리스트 -->
+                <label th:each="goods : ${goodsList}" th:for="'coupon' + ${goods.getGoodsSeq()}">
+                    <div th:class="'Product couponProduct ' + ${goods.getDefaultYn()}">
+
+                        <!-- 쿠폰 border 색상 -->
+                        <input type="hidden" th:value="${goods.getGoodsColor()}" class="activeCouponColor">
+
+                        <!-- 쿠폰 제품 정보 -->
+                        <div class='d-flex align-items-start gap-3 original col-8'>
+                            <!-- 쿠폰 선택 Radio 영역 -->
+                            <div class='d-flex'>
+                                <input type="radio" name='selectCoupon' th:id="'coupon' + ${goods.getGoodsSeq()}"
+                                       th:class="'couponActive-' + ${goods.getDefaultYn()}">
+                                <label th:for="'coupon' + ${goods.getGoodsSeq()}" class="selectRadioLabel"></label>
+                            </div>
+
+                            <!-- 쿠폰 제품 브랜드 명 & 제품 명 -->
+                            <div class='otherTitle'>
+                                <input type="hidden" th:value="${goods.getGoodsId()}" class="goodsId">
+                                <input type="hidden" th:value="${goods.getGoodsSeq()}" class="goodsSeq">
+
+                                <!-- 브랜드 명 -->
+                                <h6 class="brand fw-300">
+                                    <span class="fw-500m" th:if="${goods.getDefaultYn() == 'Y'}">기존</span>
+                                    <p th:text="${goods.getBrandName()}"
+                                       class="brandName brand fw-300"></p>
+                                </h6>
+
+                                <!-- 굿즈 명 -->
+                                <p th:text="${goods.getGoodsName()}" class="goodsName fw-700"></p>
+                            </div>
+                        </div>
+
+                        <!-- 쿠폰 제품 이미지 -->
+                        <div class="position-relative col-3">
+                            <!-- 굿즈 이미지 -->
+                            <img th:if="${goods.getFileImgPath() != null}" th:src="${goods.getFileImgPath()}" alt="">
+                            <img th:if="${goods.getFileImgPath() == null}"
+                                 src="https://cdn-icons-png.flaticon.com/512/6320/6320013.png" alt="">
+                            <div class="position-absolute"></div>
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <!-- 쿠폰 발급 모달 동작 버튼 (버튼 색상이 존재하지 않을 경우) -->
+        <div class='position-sticky fixedButton noColor'
+             th:if="${eventInfo.getBtnColor() == '' || eventInfo.getBtnColor() == null}">
+            <!-- case 1 : 버튼 색상이 존재하지 않고 고정된 쿠폰 텍스트일 경우 -->
+            <button type='button' th:if="${eventInfo.getBtnNm() == '' || eventInfo.getBtnNm() == null}"
+                    class="btn btn-primary fw-700" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop">쿠폰받기
+            </button>
+
+            <!-- case 2 : 버튼 색상이 존재하지 않고 입력받은 쿠폰 텍스트가 존재할 경우 -->
+            <button type='button' th:if="${eventInfo.getBtnNm() != '' && eventInfo.getBtnNm() != null}"
+                    th:text="${eventInfo.getBtnNm()}" class="btn btn-primary fw-700" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop">
+            </button>
+        </div>
+
+        <!-- 쿠폰 발급 모달 동작 버튼 (버튼 색상이 존재할 경우) -->
+        <div class='position-sticky fixedButton color'
+             th:if="${eventInfo.getBtnColor() != '' && eventInfo.getBtnColor() != null}"
+             th:style="${'background-color:' + eventInfo.getBtnColor()}">
+
+            <!-- 버튼 색상 -->
+            <input type="hidden" id="btnColor" th:value="${eventInfo.getBtnColor()}">
+
+            <!-- case 3 : 버튼 색상이 존재하고 고정된 쿠폰 텍스트일 경우 -->
+            <button type='button' th:if="${eventInfo.getBtnNm() == '' || eventInfo.getBtnNm() == null}"
+                    class="btn btn-primary fw-700" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop"
+                    th:style="${'background-color:' + eventInfo.getBtnColor()}">
+                쿠폰받기
+            </button>
+
+            <!-- case 4 : 버튼 색상이 존재하고 입력받은 쿠폰 텍스트가 존재할 경우 -->
+            <button type='button' th:if="${eventInfo.getBtnNm() != '' && eventInfo.getBtnNm() != null}"
+                    th:text="${eventInfo.getBtnNm()}" class="btn btn-primary fw-700" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop"
+                    th:style="${'background-color:' + eventInfo.getBtnColor()}">
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- 쿠폰 발급하기 모달 -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered justify-content-center">
+        <div class="modal-content">
+            <div class='modal-header'>
+                <p>팝업의 타이틀</p>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <input type="hidden" id="couponInfo" name="result_text" th:if="${couponInfo != null}"
+                   th:value="${couponInfo}">
+            <div class="modal-body" id="selectGoods"></div>
+
+            <!-- 발급 후 이동 버튼 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary col-5 fw-bold" data-bs-dismiss="modal">취소</button>
+                <a aria-current="page" class="col-7">
+                    <button type="button" class="btn btn-primary col-12" id="getCouponButton">확인</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

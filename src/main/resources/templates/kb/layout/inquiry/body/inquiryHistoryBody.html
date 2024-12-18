@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+
+<body th:fragment="inquiryHistoryBody">
+
+<!-- 잘못된 접근 시 노출 영역 -->
+<div th:replace="/kb/layout/common/body/commonErrorAccess :: commonErrorAccess"></div>
+
+<div class="container">
+    <div class='row justify-content-center'>
+        <div class='section-inquiry inquiryHistroy  col-xl-12 col-lg-12 col-xs-12 col-sm-12'>
+
+            <!-- 문의 이력 페이지 내에서 뒤로 가기 버튼 -->
+            <form role="form" th:action="@{/page/kb/availableCoupon.ux}"
+                  enctype="application/x-www-form-urlencoded" name="couponBox" th:method="post">
+                <input type="hidden" id="resultText" name="result_text" th:if="${couponInfo != null}"
+                       th:value="${couponInfo}">
+                <div class='backpage col-12 d-flex justify-content-between align-items-center'>
+                    <h2 class='h2Title fw-300'>
+                        <a class="nav-link active" aria-current="page" href="javascript:void(0);"
+                           onclick="document.forms['couponBox'].submit();">
+                            <img src="https://smilecon-img.zlgoon.com/stardream/kb/images/icon_back_24.svg" alt="">
+                            MY상담내역
+                        </a>
+                    </h2>
+                </div>
+            </form>
+
+            <!-- 조회하고자 하는 개월 기간 버튼 영역 -->
+            <div class='inquryNav' id="inquryNav">
+                <!-- 고객사 ID -->
+                <input type="hidden" id="memberId" name="memberId" th:value="${memberId}">
+
+                <nav class="nav nav-pills flex-sm-row">
+                    <a class="flex-sm-fill col-3 text-sm-center nav-link active " aria-current="page" href="#"
+                       onclick="getInquiryList(1, 1)" id="allMonth" data-period="all">전체</a>
+                    <a class="flex-sm-fill col-3 text-sm-center nav-link " href="#" onclick="getInquiryList(3, 1)"
+                       id="threeMonth" data-period="3">3개월</a>
+                    <a class="flex-sm-fill col-3 text-sm-center nav-link " href="#" onclick="getInquiryList(6, 1)"
+                       id="sixMonth" data-period="6">6개월</a>
+                    <a class="flex-sm-fill col-3 text-sm-center nav-link " href="#" onclick="getInquiryList(12, 1)"
+                       id="twelveMonth" data-period="12">12개월</a>
+                </nav>
+            </div>
+
+            <!-- 문의 이력 리스트 노출 영역 -->
+            <div class='viewDiv col-12'>
+
+                <!-- 작성한 문의 이력이 없을 경우 -->
+                <div th:if="${inquiryList == null || inquiryList.getRspList().size == 0}"
+                     class='noHistory col-12 d-flex flex-column align-items-center'>
+                    <img src="https://smilecon-img.zlgoon.com/stardream/kb/images/icon.svg" alt="">
+                    <p class="fw-300">조회된 내용이 없습니다.</p>
+                </div>
+
+                <!-- 작성한 문의 이력이 하나라도 존재할 경우 -->
+                <div th:if="${inquiryList != null}" class="accordion inquiryHistory" id="accordionExample">
+                    <div class="accordion-item" th:each="inquiry : ${inquiryList.getRspList()}" >
+
+                        <!-- 답변이 존재하는 문의 이력일 경우 -->
+                        <div class="reply" th:if="${inquiry.getAnswerStatus() == 'Y'}">
+                            <h2 class="accordion-header" th:id="'heading' + ${inquiry.getInquirySeq()}">
+
+                                <!-- 문의 상세 조회 버튼 -->
+                                <button class="accordion-button collapsed" th:inquiryBoxId="${inquiry.getInquirySeq()}"
+                                        th:onclick="getInquiryDetail(this.getAttribute('inquiryBoxId'))"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        th:data-bs-target="'#collapse' + ${inquiry.getInquirySeq()}"
+                                        aria-expanded="true"
+                                        th:aria-controls="'#collapse' + ${inquiry.getInquirySeq()}">
+                                    <div class="col-11">
+                                        <div class='mb-1 d-flex justify-content-start gap-3  align-items-center'>
+                                            <h6 class='col-12'>
+<!--                                                <span class="fw-300" th:text="'[' + ${inquiry.getType()} + ']'"></span>-->
+                                                <p class="mb-0 fw-300" th:text="${'[' + inquiry.getType() + '] ' + inquiry.getInquiryTitle()}"></p>
+                                            </h6>
+                                        </div>
+                                        <div class='mb-2 d-flex justify-content-start gap-2 align-items-center'>
+                                            <label class="fw-300">답변 완료</label>
+                                            <span class="fw-400" th:text="${inquiry.getAnswerStatusDate()}"></span>
+                                        </div>
+                                    </div>
+                                </button>
+                            </h2>
+
+                            <!-- 문의 내용 -->
+                            <div th:id="'collapse' + ${inquiry.getInquirySeq()}" class="accordion-collapse collapse"
+                                 th:aria-labelledby="'#heading' + ${inquiry.getInquirySeq()}"
+                                 data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+
+                                    <!-- 문의 질문 -->
+                                    <div class="fw-300" th:class="'questionDiv questionDiv' + ${inquiry.getInquirySeq()}"
+                                         th:id="'inquiryQuestion' + ${inquiry.getInquirySeq()}">
+
+                                    </div>
+
+                                    <!-- 문의 답변 -->
+                                    <div class="fw-300" th:class="'replyDiv replyDiv' + ${inquiry.getInquirySeq()}"
+                                         th:id="'inquiryReply' + ${inquiry.getInquirySeq()}">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- 답변이 존재하지 않은 문의 이력일 경우 -->
+                        <div class="noreply" th:if="${inquiry.getAnswerStatus() == 'N'}">
+                            <h2 class="accordion-header" th:id="'heading' + ${inquiry.getInquirySeq()}">
+
+                                <!-- 문의 상세 조회 버튼 -->
+                                <button class="accordion-button collapsed" th:inquiryBoxId="${inquiry.getInquirySeq()}"
+                                        th:onclick="getInquiryDetail(this.getAttribute('inquiryBoxId'))"
+                                        type="button" data-bs-toggle="collapse"
+                                        th:data-bs-target="'#collapse' + ${inquiry.getInquirySeq()}"
+                                        aria-expanded="true"
+                                        th:aria-controls="'collapse' + ${inquiry.getInquirySeq()}">
+                                    <div class="col-11">
+                                        <div class='mb-1 d-flex justify-content-start gap-3  align-items-center'>
+                                            <h6 class='col-12'>
+<!--                                                <span class="fw-300" th:text=""></span>-->
+                                                <p class="mb-0 fw-300" th:text="${'[' + inquiry.getType() + '] ' + inquiry.getInquiryTitle()}"></p>
+                                            </h6>
+                                        </div>
+                                        <div class='mb-2 d-flex justify-content-start gap-2 align-items-center'>
+                                            <label class="fw-300">답변 준비중</label> <span class="fw-400"
+                                                th:text="${inquiry.getAnswerStatusDate()}"></span>
+                                        </div>
+                                    </div>
+                                </button>
+                            </h2>
+
+                            <!-- 문의 내용 -->
+                            <div th:id="'collapse' + ${inquiry.getInquirySeq()}" class="accordion-collapse collapse"
+                                 th:aria-labelledby="'#heading' + ${inquiry.getInquirySeq()}"
+                                 data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+
+                                    <!-- 문의 질문 -->
+                                    <div class="fw-300" th:class="'questionDiv questionDiv' + ${inquiry.getInquirySeq()}"
+                                         th:id="'inquiryQuestion' + ${inquiry.getInquirySeq()}">
+
+                                    </div>
+
+                                    <!-- 답변이 없는 문의의 답변 영역 -->
+                                    <div class="fw-300" th:class="'replyDiv' + ${inquiry.getInquirySeq()}"
+                                         th:id="'inquiryReply' + ${inquiry.getInquirySeq()}">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 문의 리스트 페이지 이동 버튼 영역 -->
+                <nav th:if="${inquiryList != null && inquiryCount > 0}" class='navigation'
+                     aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+
+                        <!-- 가장 첫 번째 페이지 이동 버튼 영역 -->
+                        <li class="page-item" th:if="${inquiryCount > 10}">
+                            <a class="page-link" href="#" aria-label="First"
+                               th:if="${inquiryCount % 10 == 0}" onclick="prevListPage('case1')">
+                                <i class="fa-regular fa-chevrons-left">
+                                </i>
+                            </a>
+                            <a class="page-link" href="#" aria-label="First"
+                               th:if="${inquiryCount % 10 != 0}" onclick="prevListPage('case2')">
+                                <i class="fa-regular fa-chevrons-left">
+                                </i>
+                            </a>
+                        </li>
+
+                        <!-- 이전 페이지 이동 버튼 영역 -->
+                        <li class="page-item" th:if="${inquiryCount > 10}">
+                            <a class="page-link" href="#" aria-label="Previous"
+                               th:if="${inquiryCount % 10 == 0}" onclick="prevPage('case1')">
+                                <i class="fa-regular fa-chevron-left">
+                                </i>
+                            </a>
+                            <a class="page-link" href="#" aria-label="Previous"
+                               th:if="${inquiryCount % 10 != 0}" onclick="prevPage('case2')">
+                                <i class="fa-regular fa-chevron-left">
+                                </i>
+                            </a>
+                        </li>
+
+                        <!-- 데이터가 10개 미만일 경우 -->
+<!--                        <li class="page-item gap-3 disabled" th:if="${inquiryCount <= 10}">-->
+<!--                            <span class="page-link fw-bold">1</span>-->
+<!--                            <span class="page-link">/</span>-->
+<!--                            <span class="page-link">1</span>-->
+<!--                        </li>-->
+
+                        <!-- 데이터가 10개 이상이고 데이터 수가 10 단위로 맞아떨어질 경우 -->
+                        <li class="page-item disabled"
+                            th:if="${inquiryCount > 10 && inquiryCount % 10 == 0}">
+                            <span class="page-link fw-bold" id="presentPage" value="1">1</span>
+                            <span class="page-link">/</span>
+                            <span class="page-link" id="maxPage" th:text="${inquiryCount / 10}"></span>
+                        </li>
+
+                        <!-- 데이터가 10개 이상이고 데이터 수가 10 단위를 초과할 경우 -->
+                        <li class="page-item disabled"
+                            th:if="${inquiryCount > 10 && inquiryCount % 10 != 0}">
+                            <span class="page-link fw-bold" id="presentPage2" value="1">1</span>
+                            <span class="page-link">/</span>
+                            <span class="page-link" id="maxPage2" th:text="${inquiryCount / 10 + 1}"></span>
+                        </li>
+
+                        <!-- 다음 페이지 이동 버튼 영역 -->
+                        <li class="page-item" th:if="${inquiryCount > 10}">
+                            <a class="page-link" href="#" aria-label="Next"
+                               th:if="${inquiryCount % 10 == 0}" onclick="nextPage('case1')">
+                                <i class="fa-regular fa-chevron-right">
+                                </i>
+                            </a>
+                            <a class="page-link" href="#" aria-label="Next"
+                               th:if="${inquiryCount % 10 != 0}" onclick="nextPage('case2')">
+                                <i class="fa-regular fa-chevron-right">
+                                </i>
+                            </a>
+                        </li>
+
+                        <!-- 가장 마지막 페이지 이동 버튼 영역 -->
+                        <li class="page-item" th:if="${inquiryCount > 10}">
+                            <a class="page-link" href="#" aria-label="Last"
+                               th:if="${inquiryCount % 10 == 0}" onclick="nextMaxPage('case1')">
+                                <i class="fa-regular fa-chevrons-right">
+                                </i>
+                            </a>
+                            <a class="page-link" href="#" aria-label="Last"
+                               th:if="${inquiryCount % 10 != 0}" onclick="nextMaxPage('case2')">
+                                <i class="fa-regular fa-chevrons-right">
+                                </i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class='bottomDiv'>
+        <div class='footerDiv'>
+            <h5 class="fw-300">KB스타드림 전용 고객센터</h5>
+            <h2 class="fw-bold">1661-8193</h2>
+            <h6 class="fw-300">평일 09:30~18:00 (점심시간 11:30~13:00)</h6>
+            <h6 class="fw-300">토, 일, 공휴일 휴무</h6>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

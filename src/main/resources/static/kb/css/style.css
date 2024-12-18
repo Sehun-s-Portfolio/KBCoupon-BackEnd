@@ -1,0 +1,3755 @@
+:root {
+    --pointGold: #f8a70c; /* 진한 메인컬러 */
+    --subColor: #816843; /* 서브 KBBrown*/
+    --pointColor: var(--status_color_Blue); /* 포인트컬러 */
+    --kb_UI_02: #26282c; /* 볼드 텍스트 컬러 */
+    --regular: #696f76; /*일반 텍스트 컬러*/
+    --light: #999999; /* 얇은 텍스트 컬러*/
+    --kb_UI_08: #DDE1E4; /* 보더 컬러 */
+
+    --inputBorder: #B0986A; /*인풋 보더컬러*/
+    --dark: #212224; /* 다크모드 백그라운드 */
+    --bs-font-sans-serif: "KBFGTextLight", sans-serif; /* 새로운 폰트 적용 */
+
+    --fwbold: 700;
+
+    --kb_UI_01: #000000;
+    --kb_UI_02: #26282C;
+    --kb_UI_03: #484B51;
+    --kb_UI_04: #696E76;
+    --kb_UI_05: #838B94;
+    --kb_UI_06: #AAB0BB;
+    --kb_UI_07: #C6CBD0;
+    --kb_UI_08: #DDE1E4;
+    --kb_UI_09: #EBEEF0;
+    --kb_UI_10: #F7F7F8;
+    --kb_UI_11: #FFFFFF;
+
+    --BDC_Light_01: #ebeef0;
+    --BDC_Light_02: #696e76;
+    --BDC_Light_03: #c6cbd0;
+    --BDC_Light_04: #484b51;
+    --BDC_Light_05: #45484d;
+    --BDC_Light_06: #86888a;
+    --BDC_Light_07: #65696e;
+    --BDC_Light_08: #8c8c8e;
+
+    --kb_UI_PH_Light: #929292;
+    --kb_UI_PH_Dark: #4e5257;
+
+    --kb_Point_Gold: #7d6c59;
+
+    --kb_Yellow_Negative: #ffcc00;
+    --kb_Yellow_Positive: #ffbc00;
+
+    --status_Color_Red: #f23f3f;
+    --status_Color_Yellow: #ffd338;
+    --status_color_Blue: #287eff;
+
+
+}
+
+
+@font-face {
+    font-family: 'KBFGTextLight';
+    src: url('https://smilecon-img.zlgoon.com/stardream/kb/font/KBfgTextL.ttf') format('truetype');
+    src: url('https://smilecon-img.zlgoon.com/stardream/kb/font/KBFGTextL.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'KBFGTextMedium';
+    src: url('https://smilecon-img.zlgoon.com/stardream/kb/font/KBfgTextM.woff') format('woff');
+    src: url('https://smilecon-img.zlgoon.com/stardream/kb/font/KBfgTextM.ttf') format('truetype');
+
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'KBFGTextBold';
+    src: url('https://smilecon-img.zlgoon.com/stardream/kb/font/KBfgTextB.ttf') format('truetype');
+    src: url('https://smilecon-img.zlgoon.com/stardream/kb/font/KBFGTextB.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('https://smilecon-img.zlgoon.com/stardream/kb/font/Roboto-Medium.ttf') format('truetype');
+    font-style: normal;
+
+}
+
+
+.inquiryHistory .accordion-item .accordion-header .accordion-button:not(.collapsed) {
+    border-bottom: none !important;
+}
+
+html {
+    font-size: 16px;
+}
+
+.modal form {
+    width: 90%;
+}
+
+a {
+    color: var(--kb_UI_02);
+}
+
+s {
+    text-decoration: none !important;
+}
+
+body {
+    font-family: 'KBFGTextLight', sans-serif; /* 기본적으로 Light 폰트 사용 */
+    overflow-x: hidden;
+}
+
+.fw-bold {
+    font-family: 'KBFGTextBold', sans-serif; /* 굵은 폰트를 사용하고 싶은 경우 */
+    font-weight: 700 !important;
+}
+
+.fw-700 {
+    font-family: 'KBFGTextBold', sans-serif; /* 굵은 폰트를 사용하고 싶은 경우 */
+    font-weight: 700 !important;
+}
+
+.fw-500 {
+    font-family: 'KBFGTextMedium', sans-serif; /* Medium 폰트를 사용하고 싶은 경우 */
+    font-weight: 500;
+}
+
+.fw-300 {
+    font-family: 'KBFGTextLight', sans-serif; /* Medium 폰트를 사용하고 싶은 경우 */
+    font-weight: 300 !important;
+}
+
+.fw-400 {
+    font-family: 'KBFGTextLight', sans-serif; /* Medium 폰트를 사용하고 싶은 경우 */
+    font-weight: 400 !important;
+}
+
+.fw-500m {
+    font-family: 'KBFGTextMedium', sans-serif; /* Medium 폰트를 사용하고 싶은 경우 */
+    font-weight: 500;
+}
+
+.fw-roboto {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+a button i {
+    color: var(--kb_UI_02) !important;
+}
+
+
+ul li::marker {
+    font-size: 0.7rem !important; /* Adjust this value to your preference */
+}
+
+
+.btn-primary:hover {
+    background-color: var(--status_Color_Yellow) !important;
+    color: var(--kb_UI_02);
+}
+
+h1, h2, h3, h4, h5, h6, p, span {
+    word-break: keep-all;
+    word-wrap: break-word;
+    line-break: auto;
+
+}
+
+.page-item .page-link span.fw-bold {
+    color: var(--kb_UI_02) !important;
+}
+
+body {
+    padding: 0;
+}
+
+.wrong {
+    display: none !important;
+}
+
+ul {
+    padding-left: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.backpage img {
+    width: 1.4rem;
+}
+
+/* 공통 */
+
+#closeBtn {
+    padding: 0;
+    width: 1.5rem;
+}
+
+#closeBtn img {
+    width: 100%;
+    padding: 0;
+}
+
+.inquryDiv {
+    /* position: absolute; */
+    padding: 2.5rem 2rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: var(--kb_UI_11);
+}
+
+.inquryDiv .buttonDiv button {
+    background-color: var(--kb_UI_11);
+    border: 1px solid;
+    border-color: #838B94;
+    color: var(--kb_UI_02);
+    width: 100%;
+    font-weight: var(--fwbold);
+    border-radius: 5px;
+    line-height: 1.4375rem;
+    padding: 0.6rem 0;
+    font-size: 0.875rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.titleDiv .fa-angle-left {
+    margin-right: 5px;
+}
+
+.titleDiv .h2Title {
+    margin-bottom: 0;
+    font-weight: var(--fwbold);
+    font-size: 1.25rem;
+}
+
+.goback .fa-angle-left {
+    margin-right: 5px;
+}
+
+.goback .h2Title {
+    margin-bottom: 0;
+    font-weight: var(--fwbold);
+    font-size: 1.25rem;
+}
+
+.h2Title .fa-angle-left {
+    margin-right: 15px;
+}
+
+.h3Title .fa-angle-left {
+    margin-right: 15px;
+}
+
+.h3Title {
+    font-size: 1rem;
+}
+
+.goback {
+    margin-top: 10px;
+    margin-bottom: 25px;
+    padding: 10px 1.25rem;
+}
+
+/* 쿠폰 */
+
+
+/* 새 쿠폰 */
+.newEx {
+    min-height: 10.875rem;
+    filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.1));
+    padding: 0;
+    border-radius: 0.6rem;
+    justify-content: center;
+    border: 1px solid #DDE1E4;
+    background: #FFF;
+
+}
+
+.newEx.active {
+    padding: 0 !important;
+}
+
+.history .newEx {
+    filter: opacity(0.4);
+}
+
+.newEx a {
+    padding: 0 1.2rem 0.1rem 1.2rem;
+    width: 100%;
+}
+
+.newEx a .newExDetail {
+    padding: 1rem 0 1rem 0;
+}
+
+.newEx .newExDetail .couponText {
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: var(--kb_UI_04);
+
+}
+
+.newEx .newExDetail .couponText .couponTextTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.25rem;
+    width: 100%;
+}
+
+.newEx.active .newExDetail .couponText .couponTextTitle {
+    gap: 0.56rem;
+
+}
+
+.newEx .newExDetail .couponText .couponTextTitle .dataEpire {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400 !important;
+    line-height: 1rem;
+    font-size: 0.875rem;
+    margin-bottom: 0;
+    color: var(--kb_UI_04);
+}
+
+.newEx .newExDetail .couponText .couponTextTitle .brand span {
+    padding: 0.125rem 0.5rem;
+    background-color: #E9E9E9;
+    color: var(--subColor);
+    font-weight: 500;
+    font-size: 0.8rem;
+    display: none;
+    line-height: 1.125rem;
+    border-radius: 2px;
+}
+
+.newEx.active .newExDetail .couponText .couponTextTitle .brand span {
+    display: block;
+}
+
+.newEx .newExDetail .couponText .couponTextTitle .date {
+    font-weight: 500;
+    border: 1px solid;
+    border-color: transparent;
+    color: var(--status_color_Blue) !important;
+       padding: 0.19rem 0;
+       font-size: 0.6875rem;
+       height: 1.5rem;
+       border: none;
+       line-height: 1.125rem;
+       letter-spacing: -0.02063rem;
+}
+
+.newEx .newExDetail .couponText .couponTextTitle .date.available {
+    color: var(--status_color_Blue) !important;
+    border-color: var(--status_color_Blue) !important;
+    border: 1px solid !important;
+    padding : 0.25rem 0.5rem 0.125rem 0.5rem !important;
+    border-radius: 0.125rem !important;
+    line-height: 1.025rem !important;
+    font-size: 0.8125rem;
+}
+
+.newEx .newExDetail .couponImg {
+    margin: 0 0.75rem;
+    max-width: 7rem;
+    aspect-ratio: 1 / 1;
+    padding: 0rem;
+    text-align: center;
+}
+
+.newEx .newExDetail .couponText .couponTextTitle p {
+    margin-bottom: 0;
+    text-align: left;
+    letter-spacing: -0.5px;
+    color: var(--kb_UI_02);
+    font-size: 1.125rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.5625rem;
+    text-overflow: ellipsis;
+    width: 100%;
+
+}
+
+.newEx.active .newExDetail .couponText .couponTextTitle p {
+    margin-bottom: 0.25rem;
+}
+
+.newEx .newExDetail .couponText .couponTextTitle h6 {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    color: var(--kb_UI_02);
+    line-height: 0.9rem;
+    margin-bottom: 0;
+}
+
+.newEx.active {
+    flex-direction: column;
+}
+
+.newEx.active .newExchangeChange a {
+    padding: 0;
+}
+
+.newEx.active .dateExpire {
+    /*display: none;*/
+}
+
+.newEx.active .date {
+    /*display: none;*/
+}
+
+.newExchangeChange {
+    background-color: #FFF6D6;
+    width: 100%;
+
+    display: block;
+    border-radius: 0.7rem;
+    margin-bottom: -2px;
+    border-top: 1px dashed;
+    border-bottom: 1px solid;
+    border-color: var(--kb_UI_08)
+}
+
+.newExchangeChange a button {
+    width: 100%;
+    color: #4A2F05;
+    background-color: transparent;
+    border: none;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    padding: 1rem 0;
+    line-height: 1.3125rem;
+    letter-spacing: -0.01875rem;
+}
+
+
+.newEx .col-7 h6,
+p {
+    margin-bottom: 0;
+}
+
+.newEx .col-4 img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 0.5rem;
+}
+
+.newEx .position-absolute {
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    opacity: 3%;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+    aspect-ratio: 1 / 1;
+}
+
+.newEx .round1 {
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    transform: rotate(-90deg);
+    top: 44%;
+    background-color: #f2f2f2;
+    right: -3vw;
+    border: 1px solid #DDE1E4;
+    border-radius: 50%;
+    clip-path: inset(0 0 46% 0);
+
+}
+
+.newEx .round2 {
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    transform: rotate(90deg);
+    top: 44%;
+    background-color: #f2f2f2;
+    left: -3vw;
+    border: 1px solid #DDE1E4;
+    border-radius: 50%;
+    clip-path: inset(0 0 46% 0);
+}
+
+.newEx.active .round1 {
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    transform: rotate(-90deg);
+    top: 68%;
+    background-color: #f2f2f2;
+    border: 1px solid #DDE1E4;
+    border-radius: 50%;
+    clip-path: inset(0 0 46% 0);
+}
+
+.newEx.active .round2 {
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    transform: rotate(90deg);
+    top: 68%;
+    background-color: #f2f2f2;
+    border: 1px solid #DDE1E4;
+    border-radius: 50%;
+    clip-path: inset(0 0 46% 0);
+}
+
+/* 새 쿠폰 */
+
+
+.section-coupon {
+    padding-left: 0 !important;
+    overflow-x: hidden;
+    padding-right: 0 !important;
+    min-height: calc(100vh - 120px);
+}
+
+.exchange > a {
+    padding: 0.2rem 0 0.1rem 0;
+    width: 100%;
+}
+
+.date.unknown {
+    border-color: var(--kb_UI_07) !important;
+    color: var(--kb_UI_05) !important;
+}
+
+
+.section-coupon .viewDiv {
+    margin-top: 0;
+    padding: 0;
+    min-height: 60vh !important;
+}
+
+.section-coupon .viewDiv .couponBox {
+    padding: 1rem;
+    gap: 1rem;
+
+}
+
+.section-coupon .viewDiv .couponBox.history {
+    padding: 1rem;
+
+}
+
+.couponBox.history .newEx .newExDetail .couponText .couponTextTitle .date {
+    border-color: #c6cbd0 !important;
+    color: #838b94 !important;;
+        border: 1px solid !important;
+        padding: 0.25rem 0.5rem 0.125rem 0.5rem !important;
+        border-radius: 0.125rem !important;
+        line-height: auto !important;
+        font-size: 0.8125rem;
+
+}
+
+.section-coupon .Product .position-relative .position-absolute {
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    opacity: 3%;
+    width: 100%;
+
+    border-radius: 0.5rem;
+    aspect-ratio: 1 / 1;
+}
+
+
+.section-all .couponBox.history .exchange {
+    filter: opacity(0.4);
+}
+
+.titleDiv {
+    margin-bottom: 1rem;
+    padding: 0.75rem 1.5rem;
+}
+
+.topView h6.mt-0 {
+    font-weight: 300;
+    color: var(--kb_UI_02);
+}
+
+.titleDiv .h3Title {
+    margin-bottom: 0;
+    font-weight: var(--fwbold);
+    font-size: 1rem;
+    color: var(--kb_UI_02);
+}
+
+.titleDiv button {
+    border: none;
+    background-color: transparent;
+}
+
+.titleDiv button:hover {
+    color: #4892ff;
+}
+
+.tabDiv .nav-link {
+    border: none !important;
+    border-bottom: 1px solid !important;
+    border-color: transparent !important;
+    padding: 0;
+    padding-bottom: 0.2rem;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.4375rem; /* 143.75% */
+    letter-spacing: -0.02rem;
+
+
+}
+
+.tabDiv .nav-link.active {
+    font-weight: var(--fwbold);
+    background-color: transparent !important;
+    color: var(--kb_UI_02) !important;
+}
+
+.tabDiv .nav-link.active span {
+    border-bottom: 4px solid var(--kb_UI_02) !important;
+    width: 6rem;
+    padding: 0 0rem 0.5rem 0rem;
+    display: block;
+    font-size: 1rem;
+}
+
+.tabDiv .nav-link.active {
+    color: var(--kb_UI_02) !important;
+}
+
+.tabDiv .nav-tabs {
+    border-bottom: 1px solid #dde1e4;
+    gap: 1.5rem;
+    margin-left: 1.5rem;
+    flex-wrap: nowrap;
+
+}
+
+.tabDiv .nav-tabs li {
+    width: 6rem;
+    background-color: transparent;
+}
+
+.tabDiv .nav-tabs li a {
+    text-align: center;
+    color: var(--kb_UI_05);
+    font-size: 1rem;
+    height: 2.125rem;
+    padding: 0 0.125rem;
+}
+
+.tabDiv .nav-tabs li a span {
+    padding: 0 0rem 0.5rem 0rem;
+    display: block;
+    width: 6rem;
+    font-size: 1rem;
+}
+
+.viewDiv .tabAlert {
+    background-color: var(--kb_UI_10);
+    padding: 1rem 1.8rem;
+}
+
+.viewDiv .tabAlert p {
+    color: var(--kb_UI_03);
+    width: 100%;
+    margin-bottom: 0;
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.3125rem;
+    word-break: keep-all;
+}
+
+.couponBox .noneCoupon {
+    padding-top: 5rem;
+}
+
+
+.couponBox .noneCoupon img {
+
+}
+
+.couponBox .noneCoupon p {
+    color: var(--kb_UI_02);
+    font-size: 1.125rem;
+    margin-top: 1rem;
+    line-height: 1.5625rem;;
+    text-align: center;
+
+}
+
+.couponBox .exchange {
+    display: flex;
+    padding: 0;
+    /* border: 1px solid;
+    border-color: var(--kb_UI_08); */
+    border-radius: 0.6rem;
+    justify-content: center;
+
+}
+
+.couponBox .exchange.active {
+    justify-content: space-between;
+}
+
+.couponBox .exchange.active .couponText .couponTextTitle {
+    gap: 0.56rem;
+}
+
+.exchangeDetail .couponImg {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    max-width: 7rem;
+    aspect-ratio: 1 / 1;
+    margin-left: 0.5rem;
+}
+
+.couponImg {
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.couponImg .position-absolute {
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    opacity: 3%;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+    aspect-ratio: 1 / 1;
+}
+
+.couponBox .exchange .exchangeDetail {
+    padding: 1rem 1.2rem 1.4rem 1.2rem;
+}
+
+.couponBox .exchange.active .exchangeDetail {
+    padding: 1rem 1.2rem 1rem 1.2rem;
+}
+
+.couponBox .exchange .exchangeDetail .couponImg img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 1rem;
+}
+
+.exchange .exchangeDetail .couponText {
+    display: flex;
+    flex-direction: column;
+}
+
+.exchange .exchangeDetail .couponText .couponTextTitle .date {
+    color: var(--status_color_Blue);
+    line-height: 1.125rem;
+}
+
+.exchange .exchangeDetail .couponText .couponTextTitle .dateExpire {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400 !important;
+    line-height: 1rem;
+    font-size: 0.875rem;
+    margin-bottom: 0;
+    color: var(--kb_UI_04);
+}
+
+
+.exchange .exchangeDetail .couponText h6 {
+    color: var(--light);
+    font-size: 0.8rem;
+}
+
+.exchange .exchangeDetail .couponText .couponTextTitle p {
+    font-size: 1.125rem;
+    color: var(--kb_UI_02);
+    font-weight: var(--fwbold);
+    letter-spacing: -0.5px;
+    margin-bottom: 0.25rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.5625rem;;
+    text-overflow: ellipsis;
+    margin-bottom: 0.25rem;
+}
+
+
+.exchange.active .exchangeChange {
+    background-color: #FFF6D6;;
+    width: 100%;
+    padding: 1rem 0;
+    display: block;
+    border-radius: 0.7rem;
+    margin-bottom: 1px;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-color: var(--kb_UI_08);
+
+}
+
+.exchange .exchangeChange {
+    background-color: #FFF6D6;
+    width: 100%;
+    padding: 0.6rem 0;
+    display: none;
+
+}
+
+.exchange .exchangeChange button {
+    width: 100%;
+    color: #4A2F05;
+    background-color: transparent;
+    border: none;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 1.3125rem;
+    letter-spacing: -0.01875rem;
+}
+
+.exchange .couponSelect {
+    background-color: var(--kb_UI_11);
+    padding: 16px 10px;
+    gap: 0.8rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.exchange .couponSelect h2 {
+    color: var(--kb_UI_02);
+    text-align: center;
+    font-size: 26px;
+    font-weight: var(--fwbold);
+}
+
+.section-all .couponBox .exchange {
+    background-image: url(https://smilecon-img.zlgoon.com/stardream/kb/images/ticketLight.png);
+    background-size: 100% 100%;
+    background-position: center;
+    min-height: 10.875rem;
+    filter: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.1));
+    margin-bottom: 1.5rem;
+
+}
+
+.section-all .couponBox .exchange.active {
+    background-image: url(https://smilecon-img.zlgoon.com/stardream/kb/images/Subtract.png);
+    justify-content: space-between !important;
+}
+
+.section-all .couponBox .exchange.usedCoupon {
+    filter: opacity(0.8);
+
+}
+
+.section-all .couponBox .exchange.usedCoupon .exchangeDetail .couponText .couponTextTitle p {
+    color: #838b94 !important;
+}
+
+.exchange .couponSelect i {
+    color: #999;
+    font-size: 1.25rem;
+}
+
+.exchange .couponLabel {
+    margin-bottom: 10px;
+}
+
+.exchange .exchangeDetail .couponText {
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: var(--kb_UI_04);
+}
+
+.exchange .exchangeDetail .couponText .couponTextTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.exchange.active .exchangeDetail .couponText .couponTextTitle .brand span {
+    display: block;
+}
+
+.exchange.active .exchangeDetail .couponText .couponTextTitle .brand p {
+    font-size: 0.875rem;
+}
+
+.exchange .exchangeDetail .couponText .couponTextTitle .brand span {
+    padding: 0.125rem 0.5rem;
+    background-color: #E9E9E9;
+    color: var(--subColor);
+    font-weight: 500;
+    font-size: 0.8rem;
+    display: none;
+    line-height: 1.125rem;
+    border-radius: 2px;
+}
+
+.exchange .exchangeDetail .couponText .couponTextTitle .dataExpire, .date {
+    font-size: 0.8rem;
+}
+
+.exchange .exchangeDetail .couponText .couponTextTitle .dataExpire {
+    color: var(--light);
+
+}
+
+.exchange .exchangeDetail .couponText .couponTextTitle .date {
+    font-weight: 500;
+    border: 1px solid;
+    padding: 0.125rem 0.5rem;
+    font-size: 0.8125rem;
+    border-radius: 0.125rem;
+
+}
+
+.history .exchange .exchangeDetail .couponText .couponTextTitle .date {
+    color: #838B94;
+}
+
+.exchange .exchangeDetail .couponText .couponTextTitle #changeAble {
+    border-color: var(--kb_UI_07);
+}
+
+.exchange .exchangeDetail .couponText .couponTextTitle #changed {
+    border-color: var(--kb_UI_07);
+}
+
+.exchange .exchangeDetail .couponText .couponTextTitle #expired {
+    border-color: var(--kb_UI_07);
+}
+
+#charCount {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+}
+
+textarea:focus-visible {
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+
+.exchange .exchangeDetail .couponText .couponTextTitle h6 {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: var(--fwbold);
+    margin-bottom: 0;
+    font-size: 0.875rem;
+    color: var(--kb_UI_02);
+    line-height: 0.9rem;
+    margin-bottom: 0;
+}
+
+
+.exchange .exchangeDetail .couponText .couponTextTitle s {
+    margin-bottom: 0;
+    text-align: left;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    color: var(--kb_UI_02);
+}
+
+.exchange .exchangeDetail .couponText .couponTextTitle p {
+    margin-bottom: 0.25rem;
+    text-align: left;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    color: var(--kb_UI_02);
+}
+
+.exchange .couponLabel span {
+    background-color: #4a1d00;
+    color: var(--kb_UI_11);
+    padding: 3px 7px;
+    border-radius: 3px;
+    font-size: 10px;
+}
+
+/* .exchange .couponDate {
+    display: flex;
+    color: var(--status_Color_Yellow);
+    font-size: 1.25rem;
+    align-items: center;
+    font-weight: var(--fwbold);
+    margin-bottom: 5px;
+}
+
+.exchange .couponDate span.use {
+    color: #345380;
+    margin-left: 10px;
+}
+.exchange .couponDate span.used {
+    color: #a94c4c;
+    margin-left: 10px;
+} */
+
+.exchange .couponAlert {
+    margin-bottom: 0;
+    display: none;
+}
+
+.exchange .couponAlert span {
+    font-size: 9px;
+    color: #4892ff;
+}
+
+/* 쿠폰디테일 */
+
+.section-couponDetail {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+
+}
+
+.section-couponDetail .backpage {
+    margin-bottom: 0 !important;
+}
+
+.section-couponDetail .topView {
+    padding: 0 0 0 1rem;
+    margin-bottom: 0;
+}
+
+
+.section-couponDetail .topView .col-8 {
+    padding: 0;
+    padding-left: 0.5rem;
+    line-height: 2.1875rem;
+}
+
+.section-couponDetail .topView .col-8 h1 {
+    font-weight: var(--fwbold);
+    margin-bottom: 0;
+    font-size: 1.625rem;
+        line-height: 2.1875rem;
+        padding: 1.5rem 0;
+}
+
+.section-couponDetail .topView .bear {
+    padding: 0.21013rem 2.22294rem 0.79725rem 1.046rem;
+    width: 100%;
+}
+
+.section-couponDetail .viewDiv {
+    margin-top: 0;
+    padding: 0;
+}
+
+.section-couponDetail .viewDiv .couponBox {
+    padding: 0 1.5rem;
+}
+
+/**/
+
+
+.select {
+    margin-bottom: 10px;
+}
+
+.select i {
+    position: absolute;
+    top: 3px;
+    right: 25px;
+}
+
+.select input {
+    border: none;
+    font-weight: var(--fwbold);
+    color: var(--kb_UI_02);
+}
+
+.select input::placeholder {
+    color: var(--kb_UI_02);
+}
+
+/* .winningDiv {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.winningDiv a p {
+    border: none;
+}
+
+.winningDiv a {
+    text-decoration: none;
+} */
+
+/* .winningDiv:hover {
+    background-color: #ddd;
+} */
+
+/* .winningDiv .winningDate {
+    font-size: 14px;
+    color: #555;
+    font-weight: var(--fwbold);
+}
+
+.winningDiv .winningTitle {
+    font-weight: var(--fwbold);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--kb_UI_02);
+}
+.winningDiv .winningInfo {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 0.5rem;
+}
+
+.winningDiv .winningInfo .winningRoot {
+    font-weight: var(--fwbold);
+} */
+
+/* .listWrap .viewDiv {
+    padding: 0;
+} */
+
+/*2,3 페이지*/
+
+.container {
+    padding: 0;
+    min-height: calc(100vh - 8.5rem);;
+    max-width: 100vw !important;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+
+}
+
+.section-all {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    min-height: calc(100vh - 150px);
+    position: relative;
+
+    background-color: var(--kb_UI_11);
+}
+
+
+.titleDiv .h3Title {
+    margin-bottom: 0;
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--kb_UI_02);
+}
+
+.titleDiv button {
+    border: none;
+    background-color: transparent;
+}
+
+.titleDiv button:hover {
+    color: #4892ff;
+}
+
+.viewDiv::-webkit-scrollbar {
+    display: none;
+}
+
+
+.viewDiv {
+    position: relative;
+
+    padding: 0 1.25rem;
+    margin-bottom: 1.25rem;
+    overflow-y: scroll;
+    min-height: 55vh;
+}
+
+.viewDiv.select {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0 1.5rem;
+    min-height: auto;
+    padding-bottom: 1rem;
+
+}
+
+.viewDiv .Product {
+    display: flex;
+    align-items: center;
+
+    padding: 0.9375rem 0.9375rem 0.9375rem 1.25rem;
+    gap: 1rem;
+}
+
+.viewDiv .Product .position-relative {
+    padding: 0;
+}
+
+.viewDiv .Product img {
+    width: 100%;
+    border-radius: 0.5rem !important;
+}
+
+.viewDiv .Product .otherTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.viewDiv .Product div input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.viewDiv .Product div input[type="radio"] + label {
+    position: relative;
+    padding-left: 1.25rem;
+    margin-top: 0.1rem;
+    cursor: pointer;
+}
+
+.viewDiv .Product div input[type="radio"] + label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    border: 2px solid;
+    border-color: var(--kb_UI_08);
+    background: var(--kb_UI_11);
+}
+
+.viewDiv .Product div input[type="radio"]:checked + label::after {
+    content: '';
+    position: absolute;
+    left: 0.31rem;
+    top: 0.31rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 50%;
+    border-color: var(--subColor);
+    background: var(--subColor);
+}
+
+/*.viewDiv .Product div input[type="radio"]:checked + label::before {*/
+/*    border-color: var(--subColor);*/
+/*}*/
+
+.viewDiv .Product .otherTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+
+.viewDiv .Product .original .otherTitle h6 span {
+    display: block !important;
+}
+
+.viewDiv .Product .original .otherTitle h6 p {
+    color: var(--kb_UI_02);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 0.00875rem;
+    margin-bottom: 0;
+}
+
+.viewDiv .Product .original .otherTitle h6 span {
+    color: var(--kb_Point_Gold);
+    font-size: 0.8125rem;
+    font-style: normal;
+    align-items: center;
+    font-weight: 500 !important;
+    line-height: 1.325rem;
+    letter-spacing: -0.00813rem;
+    padding: 0.04rem 0.5rem;
+    background-color: #E9E9E9;
+}
+
+
+.viewDiv .Product .original .otherTitle h6 {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.4rem;
+    font-weight: 300;
+    font-size: 0.9rem;
+    color: var(--kb_UI_02);
+    line-height: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.viewDiv .Product .otherTitle p {
+    margin-bottom: 0;
+    text-align: left;
+    font-size: 1.125rem;
+    letter-spacing: -0.0025rem;
+    font-weight: 700;
+    color: var(--kb_UI_02);
+    line-height: 1.5625rem;
+}
+
+/* 선택형페이지 메인 */
+
+.topView {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+}
+
+.topView .topBannerDiv {
+    padding: 0;
+    background-color: var(--kb_UI_10);
+}
+
+.section-coupon .topView > div:first-child {
+    padding: 0.75rem 1.5rem;
+}
+
+.section-coupon .topView div:first-child button {
+    background-color: transparent;
+    border: none;
+}
+
+.section-coupon .topView div:first-child button i {
+    font-size: 1rem;
+    color: var(--kb_UI_02) !important;
+}
+
+.section-coupon .topView .topBannerDiv .selectBannerText {
+    padding: 1.5rem;
+    padding-right: 0 !important;
+}
+
+.section-coupon .topView .topBannerDiv .selectBannerText h5 {
+    color: var(--kb_UI_02);
+    font-weight: bold !important;
+    font-size: 1.25rem;
+    width: 80%;
+    letter-spacing: -0.025rem;
+    line-height: 1.75rem;
+}
+
+.section-coupon .topView .topBannerDiv .selectBannerText p {
+    color: var(--kb_UI_02);
+    font-weight: 300;
+    font-size: 1rem;
+    letter-spacing: -0.04rem;
+    margin-bottom: 0;
+    line-height: 1.4375rem;
+}
+
+.section-coupon .topView .topBannerDiv .selectBannerImg {
+    padding: 2.71013rem 2.22294rem 1.04725rem 1.046rem;
+}
+
+
+.topView div img {
+    width: 100%;
+
+}
+
+.select {
+    padding: 0;
+}
+
+.select .couponProduct {
+    background-color: var(--kb_UI_11);
+    border: 1px solid;
+    border-color: var(--kb_UI_08);
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.07);
+    border-radius: 0.6rem;
+}
+
+.select .couponProduct.active {
+    border: 1px solid;
+    border-color: var(--kb_Point_Gold);
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.07);
+}
+
+.select .couponProduct img {
+
+    width: 100% !important;
+    border-radius: 0.5rem !important;
+    aspect-ratio: 1 / 1;
+}
+
+.select .couponProduct h6 {
+    color: var(--kb_UI_02);
+    font-weight: 300;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 0.00875rem;
+    margin-bottom: 0;
+    margin-top: 0.2rem;
+}
+
+.select .couponProduct p {
+    color: var(--kb_UI_02);
+    font-size: 0.9rem;
+    font-weight: var(--fwbold);
+}
+
+.fixedButton {
+    width: 100vw;
+    bottom: 0;
+    padding: 0;
+    left: 0;
+    margin-top: 2.5rem;
+    position: relative;
+}
+
+.fixedButton button {
+    width: 100%;
+    background-color: var(--status_Color_Yellow);
+    color: var(--kb_UI_02);
+    border: none;
+    font-size: 1.25rem;
+    font-weight: var(--fwbold);
+    padding: 1rem 0;
+    border-radius: 0;
+    line-height: 1.5625rem;;
+    letter-spacing: 0.025rem;
+}
+
+/* 쿠폰 히스토리 */
+
+.couponBox {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.couponBox .coupon {
+    display: flex;
+    padding: 0 0 0 10px;
+    /* border: 1px solid #FFCC00; */
+    border-radius: 0;
+    justify-content: space-between;
+    background-color: #ffcc00;
+    min-height: 135px;
+    position: relative;
+}
+
+.couponBox.expired {
+    padding-top: 1rem !important;
+}
+
+.couponBox.expired .exchange {
+    filter: opacity(0.5);
+}
+
+.couponBox.expired .exchange .couponSelect {
+    background-color: #7f7f7f;
+    padding: 21px 16px;
+}
+
+.couponBox.expired .exchange .couponSelect P {
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+.couponBox.expired .exchange .couponSelect h2 {
+    font-size: 22px;
+}
+
+
+.couponBox .coupon .couponImg img {
+    width: 100%;
+    text-align: center;
+}
+
+.coupon .couponText {
+    display: flex;
+    flex-direction: column;
+    color: var(--kb_UI_11);
+}
+
+.coupon .couponSelect {
+    background-color: var(--kb_UI_11);
+    padding: 32px 0;
+}
+
+.coupon .couponText h6 {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    color: var(--kb_UI_02);
+    margin-bottom: 0;
+    font-weight: var(--fwbold);
+}
+
+.coupon .couponSelect h2 {
+    color: var(--kb_UI_02);
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+.coupon .couponSelect i {
+    color: #999;
+}
+
+.coupon .couponLabel {
+    margin-bottom: 10px;
+}
+
+.coupon .couponTitle {
+    font-weight: var(--fwbold);
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.coupon .couponLabel span {
+    background-color: #4a1d00;
+    color: var(--kb_UI_11);
+    padding: 3px 7px;
+    border-radius: 3px;
+    font-size: 10px;
+}
+
+/* .coupon .couponDate {
+    display: flex;
+    color: var(--kb_UI_02);
+    font-size: 12px;
+    align-items: center;
+    font-weight: var(--fwbold);
+    margin-bottom: 5px;
+}
+
+.coupon .couponDate span.use {
+    color: #345380;
+    margin-left: 10px;
+}
+.coupon .couponDate span.used {
+    color: #a94c4c;
+    margin-left: 10px;
+} */
+
+/* .coupon .couponAlert {
+    margin-bottom: 0;
+    display: none;
+}
+
+.coupon .couponAlert span {
+    font-size: 9px;
+    color: #4892ff;
+} */
+
+.bottomDiv {
+
+    background-color: var(--kb_UI_11);
+    padding: 0;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.footerDiv {
+    margin-top: 0;
+    background-color: #f6f7f8;
+    color: #adb3ba;
+    width: 100%;
+    padding: 1.5rem 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
+    position: sticky;
+    bottom: 0;
+}
+
+.footerDiv h5 {
+    margin-bottom: 5px;
+    font-size: 0.875rem;
+    color: var(--kb_UI_04) !important;
+}
+
+.footerDiv .fw-bold {
+    color: var(--kb_UI_04) !important;
+}
+
+.footerDiv h2 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--kb_UI_04) !important;
+}
+
+.footerDiv a {
+    color: var(--kb_UI_04) !important;
+}
+
+.footerDiv h6 {
+    font-size: 0.875rem;
+    margin-bottom: 2px;
+    color: var(--kb_UI_04);
+}
+
+.backpage {
+    padding: 0.75rem 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.inquiry11 .backpage {
+    margin-bottom: 1rem !important;
+}
+
+.backpage .fa-angle-left {
+    margin-right: 10px;
+}
+
+.backpage .h2Title {
+    margin-bottom: 0;
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--kb_UI_02);
+    gap: 1rem;
+    line-height: 1.4375rem;
+}
+
+.backpage .h2Title a {
+    color: var(--kb_UI_02);
+    font-size: 1rem;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+}
+
+
+.backpage i {
+    color: var(--kb_UI_02);
+    margin-right: 10px;
+}
+
+.detailTitle {
+    padding: 0;
+}
+
+.detailTitle h6 {
+    color: var(--kb_UI_04);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.detailTitle p {
+    font-weight: var(--fwbold);
+    font-size: 1rem;
+    color: var(--kb_UI_02);
+    line-height: 1.4375rem;
+    letter-spacing: -0.02rem;
+    font-style: normal;
+
+}
+
+.detailView {
+    margin-top: 0.625rem;
+    background-color: #f6f7f8;
+    padding: 0 1.5rem;
+    border-radius: 0;
+    padding-bottom: 0.625rem;
+    margin-bottom: 0.625rem;
+    position: relative;
+}
+
+.detailView .usedDetail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 99.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detailView .expiredDetail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detailView .usedDetail h3 {
+    font-size: 1.75rem;
+    font-weight: var(--fwbold);
+    color: var(--kb_UI_11);
+    line-height: 2.4375rem;
+}
+
+.detailView .expiredDetail h3 {
+    font-size: 1.75rem;
+    font-weight: var(--fwbold);
+    color: var(--kb_UI_11);
+    line-height: 2.4375rem;
+}
+
+
+.detailView .couponDetail {
+    border-radius: 25px;
+
+}
+
+.detailView .couponDetail .couponImg {
+    /* background-image: url(https://smilecon-img.zlgoon.com/stardream/kb/images/couBackground.png);*/
+    /*background-size: 100% 100%;*/
+    /*background-repeat: no-repeat;*/
+    padding: 0;
+    text-align: center;
+    position: relative;
+}
+
+.detailView .couponDetail .couponImg canvas {
+    width: 100%;
+}
+
+/*.detailView .couponDetail .couponImg .couponData {*/
+/*    padding: 1rem 0;*/
+/*    border-top: 1px solid;*/
+/*    border-color: var(--kb_UI_08);*/
+
+/*}*/
+
+/*.detailView .couponDetail .couponImg .couponData ul {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    gap: 0.4rem;*/
+/*}*/
+
+/*.detailView .couponDetail .couponImg .couponData ul p {*/
+/*    margin-bottom: 0;*/
+/*}*/
+
+/*.detailView .couponDetail .couponImg .couponData ul p.couponDataTitle {*/
+/*    color: var(--regular);   font-size: 0.875rem; line-height: 1.25rem; letter-spacing: -1px;*/
+/*    font-weight: 300;*/
+/*}*/
+/*.detailView .couponDetail .couponImg .couponData ul p.couponDataInfo {*/
+/*    color: var(--kb_UI_02);*/
+/*    font-weight: var(--fwbold);*/
+/*    font-size: 0.9rem;*/
+/*    font-weight: 300;*/
+/*}*/
+
+/*.detailView .couponDetail .couponImg .couponBrand img {*/
+
+/*}*/
+
+/*.detailView .couponDetail .couponImg .couponBrand {*/
+/*    margin: 1rem 0;*/
+/*    !*display: none!important;*!*/
+/*}*/
+
+/*.detailView .couponDetail .couponImg .couponBrand .brandName {*/
+/*    color: var(--light);*/
+
+/*}*/
+
+/*.detailView .couponDetail .couponImg .couponBrand h6 {*/
+/*    font-weight: var(--fwbold);*/
+/*}*/
+
+/*.detailView .couponDetail .couponImg .couponBarcode {*/
+/*    padding: 0 0 4rem 0;*/
+/*}*/
+
+/*.detailView .couponDetail .couponImg .couponBarcode img {*/
+/*    width: 100%;*/
+/*    aspect-ratio: 1 / 0.5;*/
+/*    max-height: 5rem;*/
+
+/*}*/
+
+/*.detailView .couponDetail .couponMain {*/
+/*    width: 100%;*/
+/*}*/
+
+.detailBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.9rem 0 0 0;
+}
+
+.couponInfo ul {
+    padding-left: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.couponInfo ul li {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.couponInfo ul li .infoName {
+    color: var(--light);
+    font-size: 0.9rem;
+    width: 4rem;
+}
+
+.couponInfo ul li p {
+    color: var(--kb_UI_02);
+    font-weight: 300;
+    margin-bottom: 0;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    text-align: right;
+}
+
+#couponName {
+    text-overflow: ellipsis;
+    width: 100%;
+    overflow-x: hidden;
+    white-space: nowrap;
+    overflow-y: hidden;
+}
+
+.alert {
+    padding: 10px 1.25rem;
+}
+
+.alert #noticeBox {
+    word-break: break-all !important;
+}
+
+.alert h4 {
+    color: var(--kb_UI_02);
+    font-weight: var(--fwbold);
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+    line-height: 1.5625rem;;
+    letter-spacing: -0.0225rem;
+}
+
+.alertDiv {
+    padding: 0 0.625rem;
+}
+
+.alertDiv .alertName {
+    color: var(--regular);
+    font-weight: var(--fwbold);
+    margin-bottom: 0.5rem;
+}
+
+.alertP {
+    line-height: 1rem;
+    margin-top: 3rem;
+}
+
+.alertP p {
+    color: var(--kb_UI_02);
+    font-size: 0.9rem;
+    word-break: keep-all;
+    font-weight: var(--fwbold);
+    margin-bottom: 0.5rem;
+}
+
+.alertDiv ul {
+    padding-left: 1rem;
+    list-style-type: square;
+}
+
+.alertDiv ul .alertLi {
+    list-style: disc;
+    color: var(--kb_UI_02);
+    font-weight: 300;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.4375rem;
+}
+
+.alertDiv ul .alertLi span {
+    color: var(--status_Color_Red);
+}
+
+.barcodeBtn {
+    width: 90%;
+    background-color: var(--status_Color_Yellow);
+    color: var(--kb_UI_02);
+    border: none;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 1rem;
+    line-height: 1.4375rem;
+    font-style: normal;
+    border-radius: 2px;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+}
+
+.barcodeBtn.disabled {
+    background-color: var(--kb_UI_08) !important;
+    color: var(--kb_UI_06) !important;
+}
+
+/* FAQ */
+
+.section-faq {
+    padding: 0;
+    min-height: calc(100vh - 150px);
+
+}
+
+.section-faq .accordion-collapse .accordion-body {
+    border: none !important;
+    padding-left: 0;
+    padding-right: 0;
+    white-space: pre-line;
+}
+
+/* .accordion-item:not(:first-of-type) {
+    border-top: 1px solid;
+    border-color: var(--kb_UI_08);
+} */
+
+.inquiryHistory {
+margin-top: 1rem;
+}
+
+.inquiryHistory .accordion-button:focus {
+    border-top: 1px solid !important;
+    border-color: var(--kb_UI_08) !important;
+}
+
+.accordionDiv .accordion-flush {
+    margin: 5px 0;
+}
+
+
+.accordionDiv .accordion-flush .accordion-item .accordion-body {
+    background-color: var(--kb_UI_11);
+}
+
+.accordionDiv .accordion-flush .accordion-item .accordion-body div {
+    width: 100%;
+    font-size: 1rem;
+    word-break: keep-all;
+    font-weight: 300;
+    line-height: 1.4375rem;
+    margin-bottom: 0;
+    padding: 1.75rem 0 2.75rem 0;
+    gap: 1rem;
+}
+
+.viewDiv .accordion-header {
+    background-color: transparent !important;
+    /*border-bottom: none;*/
+    /*border-bottom: 1px solid #ebeef0 !important;*/
+}
+
+.viewDiv .accordion-item.collapsed:last-child .accordion-header {
+    border-bottom: 1px solid #ebeef0 !important;
+}
+
+
+.viewDiv .accordion-button.collapsed:last-child {
+    padding: 1rem 0;
+}
+
+.accordion-flush .accordion-item:last-child {
+    border-bottom: 1px solid #EBEEF0;
+}
+
+.accordion-flush .accordion-item:last-child .accordion-body {
+    border-bottom: 1px solid #EBEEF0;
+}
+
+
+.viewDiv .accordion-button.collapsed {
+    background-color: transparent;
+    color: var(--kb_UI_02) !important;
+    font-weight: 300 !important;
+    gap: 0.3rem;
+
+}
+
+
+.viewDiv .accordion-button.collapsed span {
+    color: var(--kb_UI_02);
+}
+
+.viewDiv .accordion-button.collapsed span.fw-400 {
+    color: #8C949E;
+
+
+}
+
+.inquiryHistory .accordion-button span.fw-400 {
+    color: #8C949E;
+    margin-top: 0.2275rem;
+
+}
+
+.accordion-item .accordion-header .accordion-button.collapsed {
+    border: 1px solid !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-color: #ebeef0 !important;
+}
+
+.accordion-item .accordion-header .accordion-button:not(.collapsed) {
+    border-top: 1px solid #484B51 !important;
+    border-bottom: 1px solid #ebeef0 !important;
+}
+
+/*.accordion-item:last-of-type .accordion-collapse {*/
+/*    border-top: 1px solid #ebeef0!important;*/
+/*}*/
+.accordion-item .accordion-header .accordion-button.collapsed:last-child {
+    border-bottom: none !important;
+}
+
+
+.viewDiv .accordion-button {
+
+    background-color: transparent;
+    color: var(--kb_UI_02) !important;
+    padding: 1rem 0;
+    font-weight: var(--fwbold);
+    gap: 0.3rem;
+}
+
+.viewDiv .accordion-button h6 {
+    margin-bottom: 0;
+    overflow: hidden;
+    width: 90%;
+    font-size: 1rem;
+    font-style: normal;
+    line-height: 1.4375rem; /* 143.75% */
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    letter-spacing: -0.02rem;
+
+}
+
+
+.viewDiv .accordion-button h6 p {
+    color: var(--kb_UI_02);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-bottom: 0;
+    font-size: 1rem;
+    letter-spacing: -0.5px;
+    line-height: 1.4375rem;
+    word-wrap: unset;
+    word-break: break-all;
+
+}
+
+
+.viewDiv .accordion-button h6 span {
+    color: var(--kb_UI_02);
+    margin-bottom: 0;
+
+
+}
+
+.accordion-item {
+    background-color: transparent;
+    border: none;
+}
+
+.accordion-button:not(.collapsed) {
+    box-shadow: none !important;
+
+}
+
+.accordion-button:not(.collapsed) h6 {
+    font-weight: 700 !important;
+}
+
+.accordion-button:not(.collapsed) p {
+    font-weight: bold !important;
+}
+
+.accordion-button:not(.collapsed) h6 span {
+    font-weight: bold !important;
+}
+
+.accordion-button::after {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.accordion-button:not(.collapsed)::after {
+    color: #c9cacf;
+    filter: grayscale(1);
+}
+
+.accordion-body {
+    color: var(--kb_UI_02);
+    font-size: 1rem;
+    background-color: #f8f9f9;
+}
+
+.accordionDiv {
+    margin-bottom: 3.125rem;
+    min-height: 66vh !important;
+}
+
+/* 1:1상담 */
+
+.section-inquiry {
+    padding: 0;
+    min-height: calc(100vh - 150px);
+}
+
+.inquiryHistroy {
+    padding: 0;
+    margin-bottom: 3rem;
+}
+
+.inquiryHistroy .viewDiv .accordion-header {
+    border-bottom: none;
+}
+
+
+.section-inquiry .viewDiv {
+    padding: 0 1.5rem;;
+    margin-top: 0;
+}
+
+.labelDiv {
+    margin-bottom: 1.5rem;
+}
+
+.labelDiv input,
+textarea,
+select {
+    background-color: var(--kb_UI_11);
+    color: #555;
+    font-weight: 700;
+}
+
+.labelDiv label {
+    font-size: 1rem;
+    color: var(--kb_UI_04);
+    margin-bottom: 0.1rem;
+    font-weight: 300;
+    line-height: 1.4375rem;
+}
+
+.labelDiv select {
+    padding: 5px;
+    border: 3px solid;
+    border-color: var(--inputBorder);
+}
+
+.labelDiv input {
+    border: none;
+    border-bottom: 3px solid;
+    border-color: var(--inputBorder);
+    padding: 5px 0;
+    color: var(--kb_UI_02);
+    font-weight: 700;
+    font-size: 1.185rem;
+    line-height: 1.6875rem;
+    border-radius: 0 !important;
+}
+
+.labelDiv input:focus-visible {
+
+    outline: none !important;
+}
+
+.labelDiv input::placeholder {
+    color: #929292;
+    font-size: 1.1875rem;
+    line-height: 1.6875rem;
+}
+
+.labelDiv div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.6rem;
+}
+
+.labelDiv .selectUp {
+    border-bottom: 3px solid;
+    border-color: var(--inputBorder);
+}
+
+.labelDiv .selectUp input {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+    color: var(--kb_UI_02);
+    padding: 0.3rem 0;
+    font-size: 1.185rem;
+    line-height: 1.6875rem;
+}
+
+.labelDiv .selectUp input:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+
+.labelDiv .selectUp input::placeholder {
+    color: #929292;
+    font-weight: 700 !important;
+    font-size: 1.1875rem;
+    line-height: 1.6875rem;
+
+}
+
+.labelDiv div label {
+    margin-bottom: 0;
+    font-size: 0.75rem;
+    color: var(--kb_UI_02);
+}
+
+.labelDiv textarea {
+    resize: none;
+    min-height: 13rem;
+    margin-top: 0.5rem;
+    border-color: #ccc;
+    font-size: 1rem;
+    line-height: 1.4375rem;
+    padding: 0.8rem;
+    /* border-bottom: 1px solid #4A1D00; */
+}
+
+.labelDiv textarea::placeholder {
+    color: #929292;
+    font-weight: 300;
+}
+
+
+.sendInqury {
+    width: 100%;
+    background-color: var(--status_Color_Yellow);
+    color: var(--kb_UI_02);
+    border: none;
+    padding: 10px 0;
+    font-weight: 300;
+    margin-bottom: 30px;
+    border-radius: 2px;
+    line-height: 1.4375rem;
+    margin-top: 1rem;
+}
+
+.sendInqury:hover {
+
+}
+
+.sendInqury:active {
+    background-color: var(--kb_UI_11);
+    color: #4a1d00;
+}
+
+.offcanvas {
+    border-radius: 10px 10px 0 0;
+    max-height: 50vh !important;
+
+}
+
+
+
+.offcanvas-header {
+    padding: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.offcanvas-title {
+    font-size: 1.25rem;
+    font-weight: var(--fwbold);
+    color: var(--kb_UI_02);
+    line-height: 1.75rem;
+    letter-spacing: -0.5px;
+}
+
+.offcanvas-body {
+    padding: 0;
+    overflow-y: hidden;
+}
+
+.offcanvas-body ul li {
+    padding: 0.625rem 0;
+    width: 100%;
+    text-align: left;
+}
+
+.offcanvas-body ul li a {
+    color: var(--kb_UI_02);
+    font-size: 1rem;
+    font-weight: 300;
+    transition: all 0.5s;
+    padding: 0 1.5rem;
+    line-height: 1.4375rem;
+    letter-spacing: -0.5px;
+    display: block;
+    width: 100%;
+
+}
+
+
+.offcanvas-body ul li a.active {
+    color: var(--kb_UI_02);
+}
+
+.offcanvasList {
+    padding-bottom: 2rem;
+}
+
+.offcanvas-body .offcanvasList .selectConfirm {
+    background-color: var(--status_Color_Yellow);
+    color: var(--kb_UI_02);
+    font-size: 1.2rem;
+    font-weight: var(--fwbold);
+    width: 100%;
+    border: none;
+    border-color: var(--status_Color_Yellow);
+    padding: 1.2rem 0;
+    box-shadow: none;
+    position: fixed;
+    bottom: 0;
+}
+
+.offcanvas::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* 상담내역 */
+
+.accordion-item:first-of-type .accordion-button {
+    border-radius: 0 !important;
+}
+
+.noHistory {
+    padding-top: 6.25rem;
+}
+
+.noHistory img {
+    color: var(--light);
+    font-size: 3rem;
+}
+
+.noHistory p {
+    color: var(--kb_UI_02);
+    font-size: 1.125rem;
+    margin-top: 1rem;
+    font-weight: 300;
+    line-height: 1.5625rem; /* 138.889% */
+    letter-spacing: -0.0225rem;
+}
+
+.inquryNav {
+    margin: 1.25rem 0 0 0;
+}
+
+.inquryNav nav {
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+.inquryNav nav a {
+    border: 1px solid !important;
+    border-color: #484b51 !important;
+    color: #484b51 !important;
+    background-color: transparent;
+    border-radius: 0 !important;
+    text-align: center;
+    /*color: var(--kb_UI_03);*/
+    font-size: 0.8rem;
+    line-height: 1.75;
+    padding-top: 0.68rem;
+}
+
+.inquryNav nav a:not(:last-child) {
+    border-right: none !important;
+    font-weight: 300;
+}
+
+.inquryNav nav a.active {
+    background-color: transparent !important;
+    border: 2px solid !important;
+    border-color: var(--kb_UI_03) !important;
+    color: var(--kb_UI_02) !important;
+    font-weight: 700;
+    margin-right: -1px;
+}
+
+.inquiryHistory .accordion-header .accordion-button {
+    line-height: 1.4375rem;
+    padding: 1rem 0;
+}
+
+.inquiryHistory .accordion-header .accordion-button h6 {
+    margin-bottom: 0;
+    overflow: hidden;
+    padding: 0.5rem 0;
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+    width: 100%;
+}
+
+.inquiryHistory .accordion-header .accordion-button h6::-webkit-scrollbar {
+    display: none;
+}
+
+.inquiryHistory .noreply label {
+    border: none;
+    border-color: var(--kb_UI_05);
+    background-color: var(--kb_UI_05);
+    color: var(--kb_UI_11);
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.3rem;
+    font-size: 0.8125rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.125rem; /* 138.462% */
+    letter-spacing: -0.00813rem;
+}
+
+.inquiryHistory .reply label {
+    font-size: 0.8125rem;
+    font-style: normal;
+    border: none;
+    border-color: var(--status_Color_Yellow);
+    color: var(--kb_UI_02);
+    background-color: var(--status_Color_Yellow);
+    padding: 0.3rem 0.8rem;
+    border-radius: 0.3rem;
+    font-weight: 300;
+    line-height: 1.125rem;
+    letter-spacing: -0.00813rem;
+}
+
+
+.inquiryHistory .accordion-item {
+    margin-bottom: 0;
+}
+
+.inquiryHistory .accordion-button {
+    padding: 0 0.2rem;
+    margin: 0.2rem 0;
+}
+
+.accordion-button:focus,
+.accordion-button:focus-visible,
+.accordion-button:active,
+.accordion-button.collapsed:focus,
+.accordion-button.collapsed:focus-visible,
+.accordion-button.collapsed:active {
+    outline: none !important;
+    box-shadow: none !important; /* Bootstrap에서 focus에 box-shadow로 강조할 수 있으므로 추가 */
+}
+
+.inquiryHistory .accordion-button:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+
+.inquiryHistory .accordion-button span {
+    margin-right: 0;
+    font-size: 0.875rem;
+    color: var(--kb_UI_02);
+
+}
+
+.viewDiv .navigation {
+    margin-top: 3rem;
+}
+
+.viewDiv .navigation .page-link {
+    border: none;
+    color: var(--regular);
+    display: flex;
+    gap: 0.25rem;
+    padding: 0;
+    padding-right: 0.25rem;
+}
+
+.viewDiv .navigation .page-link:last-child {
+    padding: 0;
+    padding-right: 0;
+}
+
+.viewDiv .navigation .page-link.fw-bold {
+    color: var(--kb_UI_02);
+}
+
+.viewDiv .navigation .page-item {
+    display: flex;
+    align-items: center;
+}
+
+.pagination {
+    gap: 1.25rem
+}
+
+.viewDiv .navigation .page-item.disabled {
+    gap: 0.25rem;
+    margin: 0 0.5rem;
+}
+
+.viewDiv .navigation .page-link:hover {
+    background-color: transparent;
+    color: var(--kb_UI_02);
+}
+
+.viewDiv .navigation .page-link:focus {
+    outline: none;
+    box-shadow: none;
+    border: none;
+    background-color: transparent;
+
+}
+
+.nav-pills .nav-link {
+
+    font-size: 1rem;
+}
+
+.inquiryHistory .accordion-collapse {
+    border: none;
+}
+
+.inquiryHistory .accordion-collapse .accordion-body {
+    background-color: transparent;
+    border-top: 1px solid;;
+    border-color: var(--kb_UI_08);
+    min-height: 5rem;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+.inquiryHistory .accordion-collapse .accordion-body p {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+ .inquiryHistory .accordion-body .replyDiv {
+        padding-top: 1rem;
+        border-top: 1px solid #EBEEF0;
+        border-color: #ebeef0;
+    }
+
+
+.inquiryHistory .accordion-body .questionDiv {
+    padding-bottom: 1rem;
+}
+
+
+/* 404 */
+
+.page404 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.page404 i {
+    font-size: 4rem;
+    color: var(--light);
+    margin-bottom: 1rem;
+}
+
+.page404 h2 {
+    font-size: 5rem;
+    color: var(--regular);
+}
+
+.page404 h5 {
+    color: var(--regular);
+    margin-bottom: 1.2rem;
+    font-weight: 300;
+}
+
+.page404 p {
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 0 2rem;
+    font-weight: 300;
+    line-height: 1.2rem;
+
+    color: var(--light);
+}
+
+.page404 button {
+    background: transparent;
+    border: 1px solid;
+    border-color: var(--light);
+    color: var(--light);
+    padding: 0.5rem 1rem;
+    border-radius: 2px;
+    margin-top: 2rem;
+    width: 80vw;
+
+}
+
+/* 모달 */
+
+.modal-content {
+
+    margin: 0 auto;
+    border-radius: 0.13rem;
+    border: none;
+
+
+}
+
+.modal-dialog-centered {
+    justify-content: center;
+    margin: 0;
+    padding: 0 1.5rem;
+}
+
+
+.modal-header {
+    border-bottom: none;
+    display: none;
+}
+
+.modal-header p {
+    font-family: 'KBFGTextBold';
+    color: var(--kb_UI_02);
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0;
+    letter-spacing: -0.125rem;
+}
+
+.modal-body {
+    font-family: 'KBFGTextLight';
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.4375rem;
+    letter-spacing: -0.02rem;
+    padding: 1.5rem;
+    min-height: 8rem;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.modal-body p {
+    margin-bottom: 0;
+    font-family: 'KBFGTextLight';
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.4375rem;
+    letter-spacing: -0.02rem;
+}
+
+.modal-footer {
+    padding: 0;
+    flex-wrap: nowrap;
+    border: none;
+}
+
+.modal-footer button {
+    margin: 0;
+    border-radius: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 0.812rem 1.5rem;
+}
+
+.modal-footer a {
+    margin: 0;
+}
+
+.modal-footer .btn-primary {
+    background-color: var(--kb_Yellow_Negative);
+    border-color: var(--kb_Yellow_Negative);
+    color: var(--kb_UI_02);
+    font-family: 'KBFGTextBold';
+    border-radius: 0 0 0.13rem 0;
+
+}
+
+.modal-footer .btn-secondary {
+    background-color: #EBEEF0;
+    border-color: #EBEEF0;
+    color: var(--kb_UI_02);
+    border-radius: 0 0 0 0.13rem;
+
+}
+
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+
+    .newEx.active .round1 {
+        width: 1.5rem;
+        height: 1.5rem;
+        position: absolute;
+        transform: rotate(-90deg);
+        top: 68%;
+        background-color: #f2f2f2;
+        border: 1px solid #DDE1E4;
+        border-radius: 50%;
+        clip-path: inset(0 0 46% 0);
+    }
+
+    .newEx.active .round2 {
+        width: 1.5rem;
+        height: 1.5rem;
+        position: absolute;
+        transform: rotate(90deg);
+        top: 68%;
+        background-color: #f2f2f2;
+        border: 1px solid #DDE1E4;
+        border-radius: 50%;
+        clip-path: inset(0 0 46% 0);
+    }
+
+    .newEx .round1 {
+        width: 1.5rem;
+        height: 1.5rem;
+        position: absolute;
+        transform: rotate(-90deg);
+        top: 44%;
+        background-color: #f2f2f2;
+        right: -2%;;
+        border: 1px solid #DDE1E4;
+        border-radius: 50%;
+        clip-path: inset(0 0 46% 0);
+
+    }
+
+    .newEx .round2 {
+        width: 1.5rem;
+        height: 1.5rem;
+        position: absolute;
+        transform: rotate(90deg);
+        top: 44%;
+        background-color: #f2f2f2;
+        left: -2%;;
+        border: 1px solid #DDE1E4;
+        border-radius: 50%;
+        clip-path: inset(0 0 46% 0);
+    }
+
+    html {
+        font-size: 18px;
+    }
+
+
+    .offcanvas {
+        max-height: 50vh;
+    }
+
+    .offcanvas.offcanvas-bottom {
+        min-height: 40vh !important;
+    }
+
+
+    .container {
+        max-width: 1024px !important;
+        border-left: 1px solid;
+        border-right: 1px solid;
+        border-color: var(--kb_UI_08);
+    }
+
+    .couponBarcode {
+        position: absolute;
+        bottom: 5rem;
+        left: 2.3rem;
+        width: 80%;
+    }
+
+    .detailView .couponDetail .couponImg .couponBarcode img {
+        height: 3rem;
+    }
+
+    .barcodeBtn {
+        padding: 1rem 0;
+    }
+
+    .fixedButton {
+        width: 100vw;
+        left: 0;
+    }
+
+    .bottomDiv {
+        width: 100%;
+
+    }
+
+    .barcodeBtn {
+        width: 90%;
+        left: 5vw;
+        bottom: 8.5rem;
+    }
+
+    .detailView .couponDetail .couponImg .couponBarcode img {
+        max-height: 5rem;
+
+    }
+
+
+    .page404 button {
+        width: 50vw;
+    }
+
+    .offcanvas {
+        width: 100vw;
+        left: 0 !important;
+    }
+
+    .modal-dialog {
+        max-width: 100vw !important;
+        width: 100vw;
+        justify-content: center !important;
+    }
+
+    .modal-dialog-centered {
+        max-width: 100vw !important;
+        width: 100vw !important;
+    }
+
+    .modal-content {
+        max-width: 500px;
+
+    }
+
+    .exchangeDetail .couponImg {
+        margin-left: 1.5rem;
+    }
+
+}
+
+
+@media screen and (min-width: 1025px) {
+    .newEx.active .round1 {
+        width: 1.5rem;
+        height: 1.5rem;
+        position: absolute;
+        transform: rotate(-90deg);
+        top: 68.5%;
+        background-color: #f2f2f2;
+        border: 1px solid #DDE1E4;
+        border-radius: 50%;
+        clip-path: inset(0 0 36% 0);
+    }
+
+    .newEx.active .round2 {
+        width: 1.5rem;
+        height: 1.5rem;
+        position: absolute;
+        transform: rotate(90deg);
+        top: 68.5%;
+        background-color: #f2f2f2;
+        border: 1px solid #DDE1E4;
+        border-radius: 50%;
+        clip-path: inset(0 0 36% 0);
+    }
+
+    .newEx .round1 {
+        width: 1.5rem;
+        height: 1.5rem;
+        position: absolute;
+        transform: rotate(-90deg);
+        top: 44%;
+        background-color: #f2f2f2;
+
+        border: 1px solid #DDE1E4;
+        border-radius: 50%;
+        clip-path: inset(0 0 36% 0);
+
+    }
+
+    .newEx .round2 {
+        width: 1.5rem;
+        height: 1.5rem;
+        position: absolute;
+        transform: rotate(90deg);
+        top: 44%;
+        background-color: #f2f2f2;
+
+        border: 1px solid #DDE1E4;
+        border-radius: 50%;
+        clip-path: inset(0 0 36% 0);
+    }
+
+    html {
+        font-size: 18px;
+    }
+
+    .offcanvas-body .offcanvasList .selectConfirm {
+        position: relative;
+    }
+
+    .couponBarcode {
+        position: absolute;
+        bottom: 9rem;
+        left: 5rem;
+        width: 80%;
+    }
+
+
+    .container {
+        max-width: 60vw !important;
+        border-left: 1px solid;
+        border-right: 1px solid;
+        border-color: var(--kb_UI_08);
+    }
+
+    .fixedButton {
+        width: 60vw;
+        max-width: 1080px;
+        left: 20vw;
+        position: fixed;
+    }
+
+    .offcanvas {
+        width: 60vw;
+        left: 20vw !important;
+        max-width: 1080px;
+    }
+
+    .footerDiv {
+        max-width: 60vw;
+        margin: 0 auto;
+        left: 20vw;
+    }
+
+    .bottomDiv {
+        width: 100%;
+        margin: 0 auto;
+        max-width: 60vw;
+    }
+
+    .barcodeBtn {
+
+
+    }
+
+    .section-coupon {
+        padding-bottom: 0;
+    }
+
+    .page404 button {
+        width: 25vw;
+    }
+
+    .detailView .couponDetail .couponImg .couponBarcode img {
+        height: 9rem;
+        max-height: 9rem;
+    }
+
+    .modal-dialog {
+        max-width: 100vw !important;
+        width: 100vw;
+        justify-content: center !important;
+    }
+
+    .modal-dialog-centered {
+        max-width: 100vw !important;
+        width: 100vw !important;
+    }
+
+    .modal-content {
+        max-width: 500px;
+
+    }
+
+    .exchangeDetail .couponImg {
+        margin-left: 1.5rem;
+    }
+
+}
+
+@media screen and (max-width: 375px) {
+    html {
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (max-width: 281px) {
+    html {
+        font-size: 10px !important;
+    }
+}
+
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #212224 !important; /* Darker background */
+        color: white; /* Lighter text for contrast */
+    }
+
+    .backpage .h2Title a {
+        color: var(--kb_UI_11);
+    }
+
+    .backpage .h2Title a img {
+        filter: invert(1);
+    }
+
+    .section-all {
+        background-color: #212224 !important; /* Darker background */
+        color: white;
+    }
+
+
+    .titleDiv button img {
+        filter: invert(1);
+    }
+
+    .section-coupon .topView div:first-child button {
+        filter: invert(1);
+    }
+
+    .section-all > * {
+        background-color: #212224 !important;
+        color: var(--kb_UI_11) !important;
+    }
+
+    .container {
+        border-color: transparent;
+    }
+
+    .accordion-body {
+        color: var(--kb_UI_11) !important;
+    }
+
+    .inquryDiv {
+        background-color: #212224;
+    }
+
+
+    .inquryDiv .buttonDiv button {
+        background-color: transparent;
+        color: var(--kb_UI_11);
+
+
+    }
+
+    .footerDiv {
+        background-color: #212224;
+    }
+
+
+    .section-all .tabAlert {
+        margin-bottom: 0;
+    }
+
+    .section-all .couponBox .exchange {
+        background-image: url(https://smilecon-img.zlgoon.com/stardream/kb/images/ticketDark.png) !important;
+    }
+
+    .section-all .couponBox .exchange.active {
+        background-image: url(https://smilecon-img.zlgoon.com/stardream/kb/images/Subtract2.png) !important;
+    }
+
+    .exchange .exchangeDetail .couponText p {
+        color: var(--kb_UI_11);
+    }
+
+    .titleDiv .h3Title {
+        color: var(--kb_UI_11);
+    }
+
+    /* 새쿠폰 다크모드 */
+
+.productNow {
+color: var(--kb_UI_10)!important;
+}
+    .productHistory {
+            color: #aab0b8!important;
+    }
+
+
+    .newEx {
+        background-color: #26282C;
+        border-color: var(--kb_UI_03);
+    }
+
+.couponBox.history .newEx .newExDetail .couponText .couponTextTitle .date {
+        border-color: #838b94 !important;
+        color: #aab0b8 !important;;
+            border: 1px solid !important;
+            padding: 0.25rem 0.5rem 0.125rem 0.5rem !important;
+            border-radius: 0.125rem !important;
+            line-height: auto !important;
+            font-size: 0.8125rem;
+
+    }
+
+
+
+    .newEx .newExDetail .couponText .couponTextTitle p {
+        color: var(--kb_UI_10);
+    }
+
+
+    .newEx .newExDetail .couponText .couponTextTitle h6 {
+        color: var(--kb_UI_11);
+    }
+
+    .newEx .round1 {
+        background-color: #212224;
+        border: 1px solid #484b41;
+    }
+
+    .newEx .round2 {
+        background-color: #212224;
+        border: 1px solid #484b41;
+    }
+
+    .newEx.active .round1 {
+        background: linear-gradient(0deg, rgb(38 40 44) 50%, rgb(38 40 44) 100%);
+        border: 1px solid #484b41;
+    }
+
+    .newEx.active .round2 {
+        background: linear-gradient(0deg, rgb(38 40 44) 50%, rgb(38 40 44) 100%);
+        border: 1px solid #484b41;
+    }
+
+    .newExchangeChange {
+        background: #514334;
+        border-color: #484b51;
+    }
+
+    .newExchangeChange a button {
+        color: #FFF6D6;
+    }
+
+    .newEx .newExDetail .couponText {
+        color: var(--kb_UI_08);
+    }
+
+    /*쿠폰선택 페이지*/
+    .viewDiv .Product .original .otherTitle h6 {
+        color: var(--kb_UI_11);
+    }
+
+    .section-coupon .topView .topBannerDiv .selectBannerText h5 {
+        color: var(--kb_UI_11);
+        font-weight: var(--fwbold);
+        font-size: 1.25rem;
+        width: 80%;
+    }
+
+    .section-coupon .topView .topBannerDiv {
+        background-color: var(--kb_UI_03);
+    }
+
+    .section-coupon .topView .topBannerDiv .selectBannerText p {
+        color: var(--kb_UI_10);
+        font-weight: 300;
+        font-size: 1rem;
+        letter-spacing: -1px;
+    }
+
+    .section-coupon .topView div:first-child button i {
+        color: var(--kb_UI_11) !important;
+        font-weight: 300;
+    }
+
+    .fa-xmark-large {
+        color: var(--kb_UI_11) !important;
+    }
+
+    .select .couponProduct {
+        background-color: #212224;
+        border-color: var(--kb_UI_04);
+    }
+
+    .select .couponProduct.active {
+        border-color: var(--kb_UI_11);
+    }
+
+    .viewDiv .Product .otherTitle h6 {
+        color: var(--kb_UI_10);
+    }
+
+    .viewDiv .Product .otherTitle p {
+        color: var(--kb_UI_10);
+    }
+
+    .viewDiv .Product div input[type="radio"] + label::before {
+        border-color: var(--kb_UI_04);
+        background-color: transparent;
+    }
+
+    .viewDiv .Product div input[type="radio"]:checked + label::before {
+        border-color: var(--kb_UI_08);
+    }
+
+    .section-faq .viewDiv .accordion-header {
+        border-color: #484b51 !important;
+    }
+
+    /* 쿠폰함 */
+    .tabDiv .nav-link.active {
+        color: var(--kb_UI_11) !important;
+
+    }
+
+    .tabDiv .nav-link.active span {
+        border-bottom: 5px solid var(--status_Color_Yellow) !important;
+    }
+
+    .tabDiv .nav-link {
+        border-color: transparent !important;
+    }
+
+    .tabDiv .nav-tabs {
+        border-bottom: 1px solid #575b61;
+    }
+
+    .tabDiv .nav-tabs li a {
+        color: var(--kb_UI_08);
+
+    }
+
+    .accordion-flush .accordion-item:last-child:last-child {
+        border-bottom: 1px solid #45484D !important;
+    }
+
+    .history .exchange .exchangeDetail .couponText .couponTextTitle .date {
+        color: #AAB0B8;
+    }
+
+    .exchange .exchangeChange {
+        background-color: #514334;
+
+    }
+
+    .viewDiv .tabAlert {
+        background: var(--kb_UI_03);
+    }
+
+    .viewDiv .tabAlert p {
+        color: var(--kb_UI_11);
+    }
+
+    .bottomDiv {
+        background-color: transparent !important;
+    }
+
+    .couponBox .exchange {
+        background-color: #26282C;
+        border-color: var(--kb_UI_03);
+
+    }
+
+    .exchange .exchangeDetail .couponText .couponTextTitle s {
+        color: var(--kb_UI_11);
+    }
+
+    .exchange .exchangeDetail .couponText .couponTextTitle p {
+        color: var(--kb_UI_11);
+    }
+
+    .exchange.active .exchangeChange {
+        background: #514334;
+        border-color: #484b51;
+    }
+
+    .exchange.active .exchangeChange button {
+        color: var(--kb_UI_11);
+    }
+
+    .exchange.active .exchangeChange button img {
+        width: 1.1875rem;
+        height: 0.875rem;
+    }
+
+    .viewDiv .Product .original .otherTitle h6 p {
+        color: #fff !important;
+    }
+
+    .exchange .exchangeDetail .couponText {
+        color: var(--kb_UI_11);
+    }
+
+    .exchange .exchangeDetail .couponText .couponTextTitle h6 {
+        color: var(--kb_UI_11);
+    }
+
+    .couponBox .noneCoupon i {
+        color: var(--kb_UI_11);
+    }
+
+    .couponBox .noneCoupon p {
+        color: var(--kb_UI_11);
+    }
+
+    .date.unknown {
+        border-color: var(--kb_UI_05) !important;
+        color: var(--kb_UI_06) !important;
+    }
+
+    .exchange .exchangeDetail .couponText .couponTextTitle .brand span {
+        color: var(--kb_Point_Gold);
+        font-size: 0.875rem;
+    }
+
+    .section-all .couponBox.history .exchange {
+        filter: opacity(0.4);
+    }
+
+    .exchange .exchangeDetail .couponText .couponTextTitle .dateExpire {
+        color: var(--kb_UI_08);
+    }
+
+
+    /* 쿠폰상세 */
+    .detailTitle h6 {
+        color: var(--kb_UI_10);
+    }
+
+    .backpage .h2Title {
+        color: var(--kb_UI_11)
+    }
+
+    .backpage .h2Title i {
+        color: var(--kb_UI_11);
+    }
+
+    .detailView {
+        background-color: var(--kb_UI_03);
+    }
+
+    .detailTitle p {
+        color: var(--kb_UI_11);
+    }
+
+    .couponInfo ul li .infoName {
+        color: #EBEEF0;
+    }
+
+    .couponInfo ul li p {
+        color: var(--kb_UI_11);
+    }
+
+    .alert h4 {
+        color: var(--kb_UI_11);
+    }
+
+    .alertDiv ul .alertLi {
+        color: #EBEEF0;
+    }
+
+    .barcodeBtn {
+        background-color: var(--status_Color_Yellow) !important;
+        color: var(--kb_UI_02) !important;
+    }
+
+    .detailView .couponDetail .couponImg .couponBrand h6 {
+        color: var(--kb_UI_02);
+    }
+
+
+ .inquiryHistory .accordion-body .replyDiv {
+        padding-top: 1rem;
+        border-top: 1px solid;
+        border-color: #484b51;
+    }
+
+
+    /* FAQ */
+    .accordion-button::after {
+        filter: brightness(99);
+    }
+
+    .accordion-item .accordion-header .accordion-button.collapsed {
+        border: 1px solid !important;
+        border-left: none !important;
+        border-right: none !important;
+        border-color: #45484D !important;
+    }
+
+    .accordion-item .accordion-header .accordion-button:not(.collapsed) {
+        border-top: 1px solid #fff!important;
+        border-bottom: none !important;
+    }
+
+    /*.accordion-item:last-of-type .accordion-collapse {*/
+    /*    border-top: 1px solid #45484D!important;*/
+    /*}*/
+    .accordion-item:last-of-type .accordion-collapse:last-child .accordion-body {
+        border-bottom: 1px solid #484B51 !important
+    }
+
+
+    .viewDiv .accordion-button h6 p {
+        color: var(--kb_UI_11);
+    }
+
+    .viewDiv .accordion-button h6 p span {
+        color: var(--kb_UI_11);
+    }
+
+    .viewDiv .accordion-button.collapsed span {
+        color: var(--kb_UI_11);
+    }
+
+    .accordion-button:not(.collapsed)::after {
+        color: var(--kb_UI_11) !important;
+        filter: brightness(99) !important;
+    }
+
+    .viewDiv .accordion-header {
+        background-color: transparent !important;
+        /*border-bottom: 1px solid!important;*/
+        /*border-color: #484b51!important;*/
+
+    }
+
+    .viewDiv .accordion-item.collapsed:last-child .accordion-header {
+        border-bottom: 1px solid #484b51 !important;
+    }
+
+
+    .viewDiv .accordion-button p span {
+        color: var(--kb_UI_11) !important;
+    }
+
+    .accordionDiv .accordion-flush .accordion-item .accordion-body {
+        background-color: transparent !important;
+        color: var(--kb_UI_11) !important;
+
+    }
+
+    .accordionDiv .accordion-flush .accordion-item .accordion-body div {
+        color: var(--kb_UI_11);
+    }
+
+    .labelDiv input, textarea, select {
+        background-color: transparent;
+        color: var(--kb_UI_11);
+    }
+
+    .labelDiv input::placeholder {
+        color: #4E5257;
+    }
+
+    .labelDiv textarea {
+        color: var(--kb_UI_11);
+    }
+
+    .labelDiv .selectUp input {
+        color: var(--kb_UI_11);
+    }
+
+    .offcanvas {
+        background-color: #26282C !important;
+    }
+
+    .offcanvas-title {
+        color: var(--kb_UI_11);
+    }
+
+    .offcanvas-body ul li a {
+        color: var(--kb_UI_11);
+    }
+
+    .offcanvas-header .btn-close {
+        color: var(--kb_UI_11);
+        filter: invert(1);
+    }
+
+    .inquiryHistory .accordion-collapse .accordion-body {
+        border-color: #45484D !important;
+    }
+
+    .inquiryHistory .accordion-collapse .accordion-body p {
+        color: var(--kb_UI_11);
+    }
+
+    .inquiryHistory .accordion-header .accordion-button h6 {
+        color: var(--kb_UI_11);
+    }
+
+    .viewDiv .accordion-button.collapsed span.fw-400 {
+        color: var(--kb_UI_08);
+    }
+
+    .inquiryHistory .accordion-button span.fw-400 {
+        color: var(--kb_UI_08);
+    }
+
+    .section-faq .accordion-collapse .accordion-body {
+        border-top: 1px solid #484b51 !important;
+    }
+
+    .noHistory i {
+        color: var(--kb_UI_07);
+    }
+
+    .noHistory p {
+        color: var(--kb_UI_11);
+    }
+
+    .viewDiv .navigation .page-link {
+        background-color: transparent;
+    }
+
+    .viewDiv .navigation .page-link.fw-bold {
+        color: var(--kb_UI_11);
+    }
+
+    .inquryNav nav a.active {
+        color: var(--kb_UI_11) !important;
+        border-color: var(--kb_UI_11) !important;
+    }
+
+
+    .inquryNav nav a {
+        color: var(--kb_UI_10)!important;
+        border-color: var(--kb_UI_07)!important;
+
+    }
+
+        .inquryNav nav  .nav-pills .nav-link {
+        border-color: #C6CBD0!important;
+         color: #f7f7f8!important;
+        }
+
+        .inquryNav nav .nav-pills .nav-link.active {
+       }
+
+    .viewDiv .accordion-button span {
+        color: var(--kb_UI_11);
+    }
+
+    .viewDiv .accordion-button h6 span {
+        color: var(--kb_UI_11);
+        margin-bottom: 0;
+
+
+    }
+
+    .page-item .page-link span.fw-bold {
+        color: #fff !important;
+    }
+
+    /* inqury */
+    .labelDiv label {
+        color: var(--kb_UI_11);
+    }
+
+    .labelDiv .selectUp input::placeholder {
+        color: #4E5257 !important;
+    }
+
+    .footerDiv {
+        color: var(--kb_UI_05);
+        background-color: var(--kb_UI_02);
+    }
+
+    .footerDiv h2 {
+        color: var(--kb_UI_05) !important;
+    }
+
+    .footerDiv .fw-bold {
+        color: var(--kb_UI_05) !important;
+    }
+
+    .footerDiv h5 {
+        color: var(--kb_UI_05);
+    }
+
+    .footerDiv a {
+        color: var(--kb_UI_05) !important;
+    }
+
+
+    /* 모달 */
+    .modal-content {
+
+        margin: 0 auto;
+        background-color: var(--kb_UI_02) !important;
+
+    }
+
+    .modal-header {
+        border-bottom: none;
+    }
+
+    .modal-header p {
+        font-family: 'KBFGTextBold';
+        color: var(--kb_UI_11);
+        font-weight: 700;
+        font-size: 1.25rem;
+        margin-bottom: 0;
+        letter-spacing: -0.125rem;
+    }
+
+    .modal-body {
+        font-family: 'KBFGTextLight';
+        font-weight: 300;
+        font-size: 1rem;
+        line-height: 1.4375rem;
+        letter-spacing: -0.125rem;
+        color: var(--kb_UI_10);
+
+    }
+
+    .modal-footer {
+        padding: 0;
+        flex-wrap: nowrap;
+    }
+
+    .modal-footer button {
+        margin: 0;
+        border-radius: 0;
+        font-size: 1rem;
+        font-weight: 700;
+        padding: 0.812rem 1.5rem;
+    }
+
+    .modal-footer a {
+        margin: 0;
+    }
+
+    .modal-footer .btn-primary {
+        background-color: var(--kb_Yellow_Negative);
+        border-color: var(--kb_Yellow_Negative);
+        color: var(--kb_UI_02);
+        font-family: 'KBFGTextBold';
+    }
+
+    .modal-footer .btn-secondary {
+        background-color: var(--kb_UI_04);
+        border-color: var(--kb_UI_04);
+        color: var(--kb_UI_11);
+        font-family: 'KBFGTextBold';
+    }
+
+
+}
+
+
+@media screen  and (min-width: 300px) and (max-width: 1024px) {
+    .fixedButton {
+        bottom: 0;
+        left: 0;
+        position: fixed;
+    }
+
+    .bottomDiv {
+
+        bottom: 0;
+        left: 0;
+
+    }
+}
+
+
+@media screen and (min-width: 300px) and (max-width: 1024px) {
+    .newEx.active .round1 {
+        right: -0.75rem;
+    }
+
+    .newEx.active .round2 {
+        left: -0.75rem;
+    }
+
+    .newEx .round1 {
+        right: -0.75rem;
+    }
+
+    .newEx .round2 {
+        left: -0.75rem;
+    }
+}
+
+
+
+@media screen and (min-width: 1025px)  {
+    .newEx.active .round1 {
+        right: -0.61rem !important
+    }
+
+    .newEx.active .round2 {
+        left: -0.61rem !important
+    }
+
+    .newEx .round1 {
+        right: -0.61rem !important
+    }
+
+    .newEx .round2 {
+        left: -0.61rem !important
+    }
+}
+
+

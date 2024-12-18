@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kbcp.site.kb.inquiry.mapper.InquiryMapper">
+
+    <!-- 문의(상담) 등록 -->
+    <insert id="insertInquiry" parameterType="kbcp.site.kb.inquiry.vo.InquiryVO" useGeneratedKeys="true" keyProperty="inquirySeq">
+        <!-- insertInquiry -->
+        insert into inquiry (
+            inquiry_title
+            ,inquiry_content
+            ,type
+            ,member_id
+            <if test="createUser != null and createUser != ''">
+                ,create_user
+            </if>
+        ) values (
+            #{inquiryTitle}
+            ,#{inquiryContent}
+            ,#{type}
+            ,#{memberId}
+            <if test="createUser != null and createUser != ''">
+                ,#{createUser}
+            </if>
+        )
+    </insert>
+
+    <!-- 작성한 문의 리스트 조회 -->
+    <select id="getInquiryList" parameterType="kbcp.common.vo.ReqListVO" resultType="kbcp.site.kb.inquiry.vo.InquiryVO">
+        <!-- getInquiryList -->
+        select
+            *
+            ,row_number() over(order by type asc) as ROW_NUM
+            ,count(*) over() ROW_CNT
+        from inquiry
+        <where>
+            member_id = #{searchKeyword3}
+            <if test="searchKeyword != null and searchKeyword != ''">
+                and create_user = #{searchKeyword}
+                <if test="searchKeyword2 != '1'">
+                    <choose>
+                        <when test="searchKeyword2 = '3'">
+                            and create_time between date_sub(now(), interval 3 month) and now()
+                        </when>
+
+                        <when test="searchKeyword2 = '6'">
+                            and create_time between date_sub(now(), interval 6 month) and now()
+                        </when>
+
+                        <when test="searchKeyword2 = '12'">
+                            and create_time between date_sub(now(), interval 12 month) and now()
+                        </when>
+                    </choose>
+                </if>
+            </if>
+        </where>
+        order by
+           inquiry_seq desc
+        limit
+            #{pageStart}, #{pageLength}
+    </select>
+
+    <!-- 문의 상세 조회 by inquiry_id -->
+    <select id="getInquiryDetail" parameterType="string" resultType="kbcp.site.kb.inquiry.vo.InquiryVO">
+        <!-- getInquiryDetail -->
+        select
+            *
+        from inquiry
+        <where>
+            inquiry_seq = #{inquirySeq} and member_id = #{memberId}
+        </where>
+    </select>
+
+    <!-- 작성 문의 갯수 조회 by customer_id -->
+    <select id="getInquiryCount" parameterType="String" resultType="long">
+        <!-- getInquiryCount -->
+        select
+            count(*)
+        from inquiry
+        <where>
+            create_user = #{createUser} and member_id = #{memberId}
+        </where>
+    </select>
+
+</mapper>

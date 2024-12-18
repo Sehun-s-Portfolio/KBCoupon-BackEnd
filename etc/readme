@@ -1,0 +1,6 @@
+◎ VM 옵션 - 값은 서버에 따라 수정해야 함.
+-XX:+UseG1GC
+-Xms4096m
+-Xmx4096m
+-Dfile.encoding=UTF-8
+-Dsvr.nm=LOC_KBCP_MAIN11

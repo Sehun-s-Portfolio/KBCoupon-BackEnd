@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<body th:fragment="couponBody">
+
+<!-- 잘못된 접근 시 노출 영역 -->
+<div th:replace="/kb/layout/common/body/commonErrorAccess :: commonErrorAccess"></div>
+
+<div class="container">
+    <div class='row justify-content-center'>
+        <div class='section-all section-coupon col-xl-12 col-lg-12 col-xs-12 col-sm-12'>
+            <div class='titleDiv col-12 d-flex align-items-center justify-content-between'>
+                <h3 class='h3Title fw-300'>쿠폰함</h3>
+            </div>
+
+            <!-- 쿠폰함 호버 영역 -->
+            <div class='tabDiv col-12'>
+                <ul class="nav nav-tabs">
+
+                    <!-- 사용 가능 쿠폰 메뉴 -->
+                    <li class="nav-item col-4">
+                        <form role="form" th:action="@{/page/kb/availableCoupon.ux}"
+                              enctype="application/x-www-form-urlencoded" name="couponBox" th:method="post">
+                            <input type="hidden" name="result_text" th:if="${couponInfo != null}"
+                                   th:value="${couponInfo}">
+                            <a class="nav-link active fw-bold" aria-current="page" href="javascript:void(0);"
+                               onclick="document.forms['couponBox'].submit();">
+                                <span>사용 가능 쿠폰</span>
+                            </a>
+                        </form>
+                    </li>
+
+                    <!--쿠폰 히스토리 메뉴 -->
+                    <li class="nav-item col-4">
+                        <form role="form" th:action="@{/page/kb/couponHistory.ux}"
+                              enctype="application/x-www-form-urlencoded" name="couponHistory" th:method="post">
+                            <input type="hidden" name="resultText" th:if="${couponInfo != null}"
+                                   th:value="${couponInfo}">
+                            <a class="nav-link fw-bold" href="javascript:void(0);"
+                               onclick="document.forms['couponHistory'].submit();">
+                                <span>쿠폰 히스토리</span></a>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 쿠폰, 알림 사항, 쿠폰 없음 전체 내용 노출 영역 -->
+            <div class='viewDiv col-12'>
+
+                <!-- 알림 사항 -->
+                <div class='col-12 tabAlert'>
+                    <p class="fw-300">당첨일 포함 2일 이내 쿠폰을 선택하지 않으실 경우
+                        기본 쿠폰이 발급 됩니다.
+                    </p>
+                </div>
+
+                <!-- 쿠폰 & 당첨권 리스트 노출 영역 -->
+                <div class='couponBox col-12'>
+
+                    <!-- 쿠폰 리스트 리뉴얼 디자인 -->
+                    <div class='newEx active col-12 d-flex justify-content-between align-items-center position-relative '
+                         th:if="${couponData != null && couponData.size != 0 && coupon.getStatus() + '/' + coupon.getExpiredYn() != '4/Y'}"
+                         th:each="coupon : ${couponData}">
+
+                        <!-- 쿠폰 영역 none 처리 구분을 위한 status값 -->
+                        <input type="hidden" class="status" th:value="${coupon.getStatus()}">
+
+                        <!-- 쿠폰 선택 카드 수정 디자인 -->
+                        <!-- STATUS 0 쿠폰들 (클릭 시, 쿠폰 선택 페이지로 이동) -->
+                        <a th:if="${coupon.getStatus() == '0'}" href="javascript:void(0);"
+                           th:selectCouponId="'selectCoupon' + ${coupon.getTranId()}"
+                           th:class="select">
+
+                            <!-- 쿠폰 선택 페이지 이동 api 호출 form -->
+                            <form role="form"
+                                  th:action="@{/page/kb/selectCoupon.ux}"
+                                  enctype="application/x-www-form-urlencoded"
+                                  th:name="'selectCoupon' + ${coupon.getTranId()}"
+                                  th:id="'selectCoupon' + ${coupon.getTranId()}" th:method="post">
+                                <!-- 회원 및 고객사 암호화 데이터 -->
+                                <input type="hidden" name="couponInfo" th:if="${couponInfo != null}"
+                                       th:value="${couponInfo}">
+
+                                <!-- 이전 접속 경로 페이지 -->
+                                <input type="hidden" name="prevPage" th:if="${prevPage != null}"
+                                       th:value="${prevPage}">
+
+                                <!-- 고유 굿즈 ID NO -->
+                                <input type="hidden" name="goodsIdNo" th:value="${coupon.getGoodsIdNo()}">
+                            </form>
+
+                            <div class='newExDetail d-flex gap-2 align-items-center justify-content-between'>
+                                <div class='couponImg position-relative col-4'>
+                                    <!-- 쿠폰 썸네일 이미지가 존재할 경우 -->
+                                    <img th:if="${coupon.getFileImgPath() != null}"
+                                         th:src="${coupon.getFileImgPath()}" alt="">
+
+                                    <!-- 쿠폰 썸네일 이미지가 존재하지 않을 경우 -->
+                                    <img th:if="${coupon.getFileImgPath() == null}"
+                                         src="https://cdn-icons-png.flaticon.com/512/10782/10782705.png" alt="">
+
+                                    <div class='position-absolute'></div>
+                                </div>
+
+                                <!-- 쿠폰 브랜드 명 & 굿즈 명 -->
+                                <div class='couponText flex-column col-7 d-flex align-items-start'>
+                                    <div class='couponTextTitle'>
+                                        <!-- 브랜드 명 -->
+                                        <h6 class='brand fw-300'>
+                                            <span class='fw-500m'>기존</span>
+                                            [[${coupon.getBrandName()}]]
+                                        </h6>
+
+                                        <!-- 굿즈 명 -->
+                                        <p class='product fw-bold' th:text="${coupon.getGoodsName()}"></p>
+                                    </div>
+                                </div>
+
+                                <div class='round1'></div>
+                                <div class='round2'></div>
+                            </div>
+
+                            <!-- 쿠폰 변경 버튼 -->
+                            <div class='newExchangeChange' >
+                                <a href="javascript:void(0);"
+                                   th:selectCouponId="'selectCoupon' + ${coupon.getTranId()}">
+                                    <button type='button'
+                                            class='d-flex gap-2 justify-content-center align-items-center fw-500m'>
+                                        <img src="https://smilecon-img.zlgoon.com/stardream/kb/images/ticketemo.svg"
+                                             alt="">
+                                        쿠폰 변경하기
+                                        <span id='dateAfter'
+                                              th:text="${'(' + coupon.getRunDate() + '일 남음)'}"></span>
+                                    </button>
+                                </a>
+                            </div>
+                        </a>
+
+
+                        <!-- STATUS 1, 2, 3, 4 쿠폰들 (클릭 시, 쿠폰 상세 페이지로 이동) -->
+                        <a href="javascript:void(0);" th:if="${coupon.getStatus() != '0'}"
+                           th:detailId="'detailCoupon' + ${coupon.getTranId()}"
+                           th:class="detail">
+
+                            <!-- 쿠폰 상세 페이지 이동 api 호출 form -->
+                            <form role="form"
+                                  th:action="@{/page/kb/couponDetail.ux}"
+                                  enctype="application/x-www-form-urlencoded"
+                                  th:name="'detailCoupon' + ${coupon.getTranId()}"
+                                  th:id="'detailCoupon' + ${coupon.getTranId()}" th:method="post">
+
+                                <!-- 회원 및 고객사 암호화 데이터 -->
+                                <input type="hidden" name="result_text" th:if="${couponInfo != null}"
+                                       th:value="${couponInfo}">
+                                <input type="hidden" name="prev_page" value="availableCoupon">
+                                <input type="hidden" name="goods_id" th:value="${coupon.getGoodsId()}">
+                                <input type="hidden" name="tran_id" th:value="${coupon.getTranId()}">
+                                <input type="hidden" name="goods_id_no" th:value="${coupon.getGoodsIdNo()}">
+                                <input type="hidden" name="event_id" th:value="${coupon.getEventId()}">
+                            </form>
+
+                            <div class='newExDetail d-flex gap-2 align-items-center justify-content-between'>
+                                <!-- 쿠폰 이미지 -->
+                                <div class='couponImg position-relative col-4'>
+                                    <img th:if="${coupon.getFileImgPath() != null}"
+                                         th:src="${coupon.getFileImgPath()}" alt="">
+
+                                    <img th:if="${coupon.getFileImgPath() == null}"
+                                         src="https://cdn-icons-png.flaticon.com/512/10782/10782705.png" alt="">
+
+                                    <div class='position-absolute'></div>
+                                </div>
+
+                                <!-- 쿠폰 브랜드 명 & 굿즈 명 & 유효 기간 & 쿠폰 상태 -->
+                                <div class='couponText flex-column col-7 d-flex align-items-start'>
+                                    <div class='couponTextTitle'>
+                                        <!-- 브랜드 명 -->
+                                        <h6 class='brand fw-300' th:text="${coupon.getBrandName()}"></h6>
+                                        <!-- 굿즈 명 -->
+                                        <p class='product fw-bold productNow' th:text="${coupon.getGoodsName()}"></p>
+
+                                        <!-- 유효 기간 -->
+                                        <span class='dateExpire numberFont'
+                                              th:text="${#strings.substring(coupon.getCouponExpiredDate(), 0, 4) + '.' + #strings.substring(coupon.getCouponExpiredDate(), 4, 6) + '.' + #strings.substring(coupon.getCouponExpiredDate(), 6, 8) + ' 까지'}"></span>
+
+                                        <!-- 쿠폰 상태 -->
+                                        <span class='date available fw-500m d-flex align-items justify-content-center'
+                                              th:if="${coupon.getStatus() != '4'}">
+                                            <span>
+                                                사용가능
+                                            </span>
+                                        </span>
+
+                                        <span class='date fw-500m'
+                                              th:if="${coupon.getStatus() == '4' && coupon.getExpiredYn() == 'N'}">※ 본 쿠폰은 사용여부가 표시되지 않습니다.</span>
+                                    </div>
+                                </div>
+
+                                <div class='round1'></div>
+                                <div class='round2'></div>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div th:replace="/kb/layout/common/body/commonFooter :: commonFooter"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
