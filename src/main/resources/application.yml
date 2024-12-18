@@ -1,23 +1,27 @@
 app:
   scheduler:
     cron:
-      clean-logfolder: 0 30 3 * * *
+      clean-logfolder: 0 19 10 * * *
       delete-logfolder: 30
-      issue-coupon: 30 0 0 * * *
+      issue-coupon: 0 1 0 * * *
   logging:
     path: /home/zlgoon/service/stardream/stardream-web/logs
-    level: INFO
+    level: DEBUG
     compress: gz
   crypto:
-    private: MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBANcqwseWbVqly0AQBPhCgCj/N6DFcwIGy1emheszxXZFFKcKlHurWnPqiRBnxniHi1c4+rGL1Y7CzHYzMZx7sbtJK1QIsWn1dOu1u4jRzfT2NnpoQ4aSmDoH7I3Gxkmxi6mrgbT/9tqDJMC03WOP/6gceOe/b4Ef1XvzworBR9pPAgMBAAECgYBH4LQCwqCzSHFWbEOMv4Jar69gmLUrtyNUm39fLANJ2BfnGWSyz3I/CNlSzqgBeZ41vAYbK5BiyXZOAhoPoU6kmg5/UVnOAZI9473b1Q5bWk/0ZY1xGU0FNtsIVVxkOl7+s0bh4CVai4+Hbvc1bjiE2WVm/CwG+gv2KBU3oFgg0QJBAPLDSLmuAFX9ahCJTbz3xwq/HrFPnzGUhqemKyxCRusaFp5tLNNPScgcUQnkc6/Jj3cIb3+4rEQDS9cGZCiWKJkCQQDi5kStbE71O9qVkLeUjEX6BU5L7SwvWhWTyt4IY3Ywr482aLKz0GDcB8gNHi/hK7Y8qj3Vnw6xSyDyEtwIqOMnAkEA2hx+wOUGxDuVChpyz+9G0+73IpPJEgDCIup3K6K4mQ6td9XbSleYkMRwQxUQo8XSsj3P/87qZ4kWoLDLWHPhMQJAKJ44JSOCbvwsASJK+tixnjRc89KdWkyyGCb04GONwOFsrbzIYNAoxrrN4StKPvDoSqvfLeKvaqWcXDlsElDJeQJAKnfrUqcc4wkREFbb5PBNiUsyev0L4ywTqIjLGdWuJAmMppkNGtZ5buiyQEmc/mwQUmGzCs2vZNCbhSTZuDRnMA==
-    public: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDXKsLHlm1apctAEAT4QoAo/zegxXMCBstXpoXrM8V2RRSnCpR7q1pz6okQZ8Z4h4tXOPqxi9WOwsx2MzGce7G7SStUCLFp9XTrtbuI0c309jZ6aEOGkpg6B+yNxsZJsYupq4G0//bagyTAtN1jj/+oHHjnv2+BH9V788KKwUfaTwIDAQAB
+    private: MIICdgIBADAsdvsdbetnNBgkqhkiG9w0BAQEFAaeabb
+    public: MIGfMA0GCSqwetrnrfgnsfgnGSIb3DQEBAQUAA4GNAD
+  test:
+    detail-json-filename: /home/zlgoon/service/stardream/stardream-web/work/selectDetail.json
 
 site:
   network:
-    zlgoon: https://corp.smilecon.co.kr
+    zlgoon: https://test.coupon.com
   kb:
     crypto:
-      seedKey: 6A552156447545423737344E47357635544B62506D5167463242705948507372 #리얼
+      seedKey: 7A306465426230315433586C4E5A566258683448585A4244756833216C217649 #개발
+      #seedKey: 6A552156447545423737344E47357635544B62506D5167463242705948507372 #리얼
+
 
 spring:
   application:
@@ -41,9 +45,12 @@ spring:
       max-request-size: 200MB
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://172.16.2.13:3306/kbcp?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    username: kbcp
-    password: 2024Kbcp!@
+#    url: jdbc:mysql://172.16.1.86:3306/kbcp?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    #    username: kbcp
+    #    password: 2024Kbcp!@
+    url: jdbc:mysql://localhost:3306/kbcp?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: root
+    password: dbnlakhbdf
     hikari:
       #풀에 유지할 최소 커넥션 갯수
       minimum-idle: 5
@@ -70,4 +77,4 @@ mybatis:
   config-location: classpath:/mybatis/config.xml
 
 server:
-  port: 10013
+  port: 8090
